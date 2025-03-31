@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Monique Frye</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Skills</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h2>Technical Skills</h2>
+        <ul>
+            <li>Programming Languages: SQL, Python, C/C++, Java, HTML, CSS, JavaScript, Golang, PHP</li>
+            <li>ERP Systems: SAP ERP (User Management, Project Systems, System Optimization)</li>
+            <li>Web Development: Object-Oriented Programming (OOP), Web Application Design (HTML/CSS, JavaScript)</li>
+            <li>Database Management: SQL Databases, Database Development, Data Analytics</li>
+            <li>Network Security: Network Security Analysis, System Troubleshooting, Technical Support</li>
+            <li>Agile Methodologies: Agile Development, Team Collaboration in Agile Environments</li>
+            <li>Operating Systems: Linux, Windows 10, macOS, Unix, iOS, Android OS</li>
+            <li>Microsoft Office Suite: Word, Excel, PowerPoint, Outlook, Teams, OneDrive, Publisher, Access</li>
+        </ul>
+        <h2>Soft Skills</h2>
+        <ul>
+            <li>Leadership & Team Management</li>
+            <li>Problem-Solving & Analytical Thinking</li>
+            <li>Effective Communication (Technical and Non-Technical)</li>
+            <li>Collaboration & Teamwork</li>
+            <li>Time Management & Multitasking</li>
+            <li>Adaptability to New Technologies</li>
+            <li>Training & Development Skills</li>
+            <li>Customer Service Excellence</li>
+            <li>Attention to Detail</li>
+        </ul>
+    </section>
+    <footer>
+        <p>© 2025 Monique Frye</p>
+    </footer>
+</body>
+</html>
