@@ -1,81 +1,88 @@
 body {
   background-color: #0d1117;
   color: #f0f6fc;
-  margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-
-hr {
-    border: 0;
-    height: 1px;
-    background: #333;
-    margin: 20px 0;
+  margin: 0;
+  padding: 0;
 }
 
 header {
-    background-color: #1a1a1a;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  background-color: #161b22;
+  padding: 2rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-style: italic;
+  color: #8b949e;
 }
 
 nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
 }
 
-nav ul li {
-    margin: 0 15px;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 8px 12px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-nav a:hover {
-    background-color: #555;
+nav ul li a {
+  color: #58a6ff;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 section {
-    margin: 20px auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
 }
 
 h2, h3 {
-    color: #333;
+  color: #58a6ff;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.project {
+  background-color: #21262d;
+  padding: 1rem;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.project:hover {
+  transform: scale(1.02);
 }
 
 footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #1a1a1a;
-    color: #fff;
-    margin-top: 30px;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 1rem;
+  background-color: #161b22;
+  font-size: 0.9rem;
+  color: #8b949e;
 }
 
-footer a {
-    color: #ddd;
-    text-decoration: none;
+a {
+  color: #58a6ff;
+  text-decoration: none;
 }
 
-footer a:hover {
-    color: #fff;
+a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .projects {
+    grid-template-columns: 1fr;
+  }
 }
