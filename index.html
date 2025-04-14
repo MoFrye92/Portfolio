@@ -1,60 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monique Frye - Coding Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monique Frye - Coding Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #0d1117;
+      color: #f0f6fc;
+    }
+
+    header {
+      background-color: #161b22;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-style: italic;
+      color: #8b949e;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    nav ul li a {
+      color: #58a6ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2, h3 {
+      color: #58a6ff;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .project {
+      background-color: #21262d;
+      padding: 1rem;
+      border-radius: 10px;
+      transition: transform 0.2s;
+    }
+
+    .project:hover {
+      transform: scale(1.02);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #161b22;
+      font-size: 0.9rem;
+      color: #8b949e;
+    }
+
+    a {
+      color: #58a6ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .projects {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Monique Frye</h1>
-        <p>Computer Science Graduate | Creative Coder | Innovator</p>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section id="home">
-        
-        <h3>Education</h3>
-        <hr>
-        <p> <b> Bachelor of Science in Computer Science </b></p>
-        <p> Colorado Technical University | 2024  </p>
-        <p> </p>
-        <p> <b> Master of Science in Computer Science</b> </p>
-        <p>  Colorado Technical University | 2025 </p>
-        
-        <h3>Professional Experience</h3>
-        <hr>
-        <ul>
-            <li><b>ERP Site Integration Lead (SIL) Support</b>, Advent Services (Jan 2024 - Present)</li>
-            <p></p>
-            <li><b>Supply Technician</b>, Adsync Technologies, Inc (Dec 2020 - Jan 2024)</li>
-            <p></p>
-            <li><b>Customer Service Associate</b>, Carvana (Sept 2019 - Dec 2020)</li>
-            <p></p>
-            <li><b>Correctional Officer</b>, Philadelphia Department of Prisons (Feb 2018 - Sept 2019)</li>
-            <p></p>
-            <li><b>Unit Supply Specialist</b>, Army National Guard (Aug 2012 - Aug 2018)</li>
-            <p></p>
-            <li><b> Retail Cashier</b>, Five Below (June 2013 - Feb 2018)</li>
-            <p></p>
-            <li><b> Senior IT Apprentice</b>, Lockheed Martin (Sept 2009 - June 2013)</li>
-            <p></p>
-            
-        </ul>
-        <h3>Military Service</h3>
-        <hr>
-        <p><b>92Y (Unit Supply Specialist)</b>, Army National Guard, 2012 - 2018</p>
-        <p><b>Security Clearance: Secret</b></p>
-    </section>
-    <footer>
-        <p>© 2025 Monique Frye | <a href="https://linkedin.com/in/Monique-Frye">LinkedIn</a></p>
-    </footer>
+  <header>
+    <h1>Monique Frye</h1>
+    <p>Computer Science Graduate | Creative Coder | Innovator</p>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I'm Monique—a creative technologist with a flair for building apps that make a difference. I founded Jack Hatter LLC to house all my passions—from coding and cybersecurity to fashion, food, and storytelling. Whether it's designing mood-based tools like <strong>VibeCheckr</strong>, developing a PCOS-friendly app, or creating a mystery podcast, I love blending logic with imagination.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Featured Projects</h2>
+    <div class="projects">
+      <div class="project">
+        <h3>VibeCheckr</h3>
+        <p>A mood-driven journaling & music app that syncs your emotional vibes with sound. Think mental health meets your playlist.</p>
+        <a href="projects/vibecheckr.md">Read More</a>
+      </div>
+      <div class="project">
+        <h3>PCOS Recipe Book App</h3>
+        <p>Meal planning meets medical support—helping folks with PCOS thrive with easy, delicious recipes.</p>
+        <a href="projects/pcos-app.md">Read More</a>
+      </div>
+      <div class="project">
+        <h3>Network Security Plan</h3>
+        <p>Comprehensive security plan created for my Master’s program—covers risk assessment, layered defense, and mitigation strategy.</p>
+        <a href="projects/network-security-plan.md">Read More</a>
+      </div>
+      <div class="project">
+        <h3>Stoned Kold Website</h3>
+        <p>The digital storefront for my infused frozen treats. Bold design meets business strategy.</p>
+        <a href="projects/stonedkold.md">Read More</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="resume">
+    <h2>Education</h2>
+    <hr>
+    <p><b>Bachelor of Science in Computer Science</b><br>Colorado Technical University | 2024</p>
+    <p><b>Master of Science in Computer Science</b><br>Colorado Technical University | 2025</p>
+
+    <h2>Professional Experience</h2>
+    <hr>
+    <ul>
+      <li><b>ERP Site Integration Lead (SIL) Support</b>, Advent Services (Jan 2024 - Present)</li>
+      <li><b>Supply Technician</b>, Adsync Technologies, Inc (Dec 2020 - Jan 2024)</li>
+      <li><b>Customer Service Associate</b>, Carvana (Sept 2019 - Dec 2020)</li>
+      <li><b>Correctional Officer</b>, Philadelphia Department of Prisons (Feb 2018 - Sept 2019)</li>
+      <li><b>Unit Supply Specialist</b>, Army National Guard (Aug 2012 - Aug 2018)</li>
+      <li><b>Retail Cashier</b>, Five Below (June 2013 - Feb 2018)</li>
+      <li><b>Senior IT Apprentice</b>, Lockheed Martin (Sept 2009 - June 2013)</li>
+    </ul>
+
+    <h2>Military Service</h2>
+    <hr>
+    <p><b>92Y (Unit Supply Specialist)</b>, Army National Guard, 2012 - 2018</p>
+    <p><b>Security Clearance:</b> Secret</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>Languages: Python, JavaScript, HTML/CSS, SQL</li>
+      <li>Tools: GitHub, VSCode, Figma, React (in progress)</li>
+      <li>Strengths: Creative problem-solving, UX thinking, brand storytelling</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:JackHatterLLC@gmail.com">JackHatterLLC@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/MoFrye92" target="_blank">MoFrye92</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/Monique-Frye" target="_blank">Monique Frye</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Monique Frye | Jack Hatter LLC</p>
+  </footer>
 </body>
 </html>
