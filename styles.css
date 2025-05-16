@@ -164,4 +164,38 @@ footer a:hover {
   margin-right: 8px;
   width: 20px;
 }
+#skills ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#skills li {
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  line-height: 1.5;
+}
+
+#skills i {
+  color: #58a6ff;
+  margin-right: 10px;
+  min-width: 22px;
+  text-align: center;
+  font-size: 1rem;
+}
+#skills h2 {
+  color: #58a6ff;
+  text-shadow: 0 0 5px #58a6ff44;
+  position: relative;
+}
+
+#skills h2::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 60px;
+  background: #58a6ff;
+  margin-top: 0.5rem;
+  border-radius: 10px;
+}
 
