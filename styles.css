@@ -146,19 +146,18 @@ nav a:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 20px rgba(88, 166, 255, 0.2);
 }
+
 .skill-group img {
-  width: 100%;
-  max-width: 320px;
-  max-height: 180px;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
+  transform: scale(1.5);
+  transform-origin: center;
 }
 
 .skill-group {
   padding: 2.5rem 1rem;
-  min-height: 220px;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* === LINKS === */
