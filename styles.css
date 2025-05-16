@@ -159,4 +159,9 @@ footer a:hover {
   color: #58a6ff;
   font-weight: bold;
 }
+#skills i {
+  color: #58a6ff;
+  margin-right: 8px;
+  width: 20px;
+}
 
