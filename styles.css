@@ -134,7 +134,8 @@ nav a:hover {
   background-color: #21262d;
   border: 1px solid #30363d;
   border-radius: 10px;
-  padding: 2rem 1rem;
+  padding: 2.5rem 1rem;
+  min-height: 260px;
   box-shadow: 0 0 10px rgba(88, 166, 255, 0.05);
   display: flex;
   align-items: center;
@@ -148,16 +149,13 @@ nav a:hover {
 }
 
 .skill-group img {
-  transform: scale(1.5);
-  transform-origin: center;
-}
-
-.skill-group {
-  padding: 2.5rem 1rem;
-  min-height: 260px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  max-width: 320px;
+  max-height: 160px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }
 
 /* === LINKS === */
@@ -204,6 +202,8 @@ footer a:hover {
     font-size: 2rem;
   }
 }
+
+/* === TESTIMONIALS === */
 #testimonials {
   padding: 2rem 1rem;
   margin-top: 3rem;
