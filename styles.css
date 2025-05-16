@@ -1,9 +1,11 @@
+/* === Base Layout === */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #0d1117;
   color: #c9d1d9;
   margin: 0;
   padding: 0;
+  line-height: 1.6;
 }
 
 h1, h2, h3 {
@@ -11,9 +13,20 @@ h1, h2, h3 {
   margin-bottom: 0.5rem;
 }
 
-p {
-  line-height: 1.6;
+section {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #30363d;
+  margin: 1rem 0;
+}
+
+/* === Header & Nav === */
 header {
   background-color: #161b22;
   padding: 2rem 1rem;
@@ -26,9 +39,9 @@ header h1 {
 }
 
 header p {
+  font-style: italic;
   color: #8b949e;
   font-size: 1rem;
-  font-style: italic;
 }
 
 nav {
@@ -49,7 +62,7 @@ nav a:hover {
 
 .resume-btn {
   background-color: #238636;
-  color: #fff;
+  color: white;
   padding: 10px 16px;
   border-radius: 6px;
   margin-left: 1rem;
@@ -60,6 +73,8 @@ nav a:hover {
 .resume-btn:hover {
   background-color: #2ea043;
 }
+
+/* === Project Grid === */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -69,22 +84,31 @@ nav a:hover {
 
 .project {
   background-color: #21262d;
-  border-radius: 10px;
   padding: 1rem 1.5rem;
+  border-radius: 10px;
+  transition: transform 0.2s;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease;
 }
 
 .project:hover {
   transform: scale(1.02);
 }
+
+a {
+  color: #58a6ff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* === Footer === */
 footer {
-  background-color: #161b22;
-  color: #8b949e;
   text-align: center;
   padding: 1.5rem 1rem;
+  background-color: #161b22;
   font-size: 0.9rem;
-  margin-top: 2rem;
+  color: #8b949e;
 }
 
 footer a {
@@ -92,23 +116,14 @@ footer a {
   text-decoration: none;
   margin: 0 0.5rem;
 }
-section {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+
+footer a:hover {
+  text-decoration: underline;
 }
 
-hr {
-  border: 0;
-  height: 1px;
-  background: #30363d;
-  margin: 1rem 0;
-}
-h2::after {
-  content: '';
-  display: block;
-  height: 2px;
-  width: 60px;
-  background: #58a6ff;
-  margin-top: 0.5rem;
+/* === Responsive === */
+@media (max-width: 768px) {
+  .projects {
+    grid-template-columns: 1fr;
+  }
 }
