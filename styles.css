@@ -210,9 +210,33 @@ footer a:hover {
     font-size: 2rem;
   }
 }
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
 
-/* === HUMAN TOUCH NOTES === */
-/* - Mo Mode activated with stack-style grid using resume tech
-   - Dark contrast boxes with tech logos and titles
-   - Skills broken out by category for quick scannability
-   - Consistent shadows and spacing across all blocks */
+.skill-group {
+  background-color: #21262d;
+  border: 1px solid #30363d;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(88, 166, 255, 0.05);
+}
+
+.skill-group h3 {
+  color: #58a6ff;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-group p {
+  color: #c9d1d9;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
