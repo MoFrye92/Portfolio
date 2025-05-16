@@ -146,15 +146,17 @@ nav a:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 20px rgba(88, 166, 255, 0.2);
 }
-
 .skill-group img {
-  width: 120px;
-  height: auto;
+  width: 100%;
+  max-width: 160px;
   max-height: 100px;
+  height: auto;
   object-fit: contain;
   display: block;
-  border-radius: 6px;
+  margin: 0 auto;
 }
+
+
 
 /* === LINKS === */
 a {
