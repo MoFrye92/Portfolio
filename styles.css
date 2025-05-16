@@ -115,55 +115,42 @@ nav a:hover {
   font-weight: bold;
 }
 
-/* === SKILLS STACK === */
-#stack {
-  padding: 2rem 1rem;
-  text-align: left;
-}
-
-#stack h2 {
+/* === SKILLS & TOOLS GRID === */
+#skills h2 {
   text-align: center;
   color: #58a6ff;
+  margin-bottom: 2rem;
   font-size: 2rem;
-  margin-bottom: 2rem;
 }
 
-.stack-category {
-  margin-bottom: 2rem;
-}
-
-.stack-category h3 {
-  color: #c9d1d9;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  border-left: 4px solid #58a6ff;
-  padding-left: 10px;
-  text-transform: uppercase;
-}
-
-.stack-list {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
-  padding-left: 0;
+  margin-top: 1rem;
 }
 
-.stack-list li {
+.skill-group {
+  background-color: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(88, 166, 255, 0.05);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background-color: #21262d;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(88, 166, 255, 0.1);
-  color: #c9d1d9;
-  font-weight: 500;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.stack-list img {
-  width: 24px;
-  height: 24px;
+.skill-group:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(88, 166, 255, 0.2);
+}
+
+.skill-group img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
 }
 
 /* === LINKS === */
@@ -210,33 +197,3 @@ footer a:hover {
     font-size: 2rem;
   }
 }
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-.skill-group {
-  background-color: #21262d;
-  border: 1px solid #30363d;
-  padding: 1rem 1.25rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(88, 166, 255, 0.05);
-}
-
-.skill-group h3 {
-  color: #58a6ff;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.skill-group p {
-  color: #c9d1d9;
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-
