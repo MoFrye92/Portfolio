@@ -134,7 +134,7 @@ nav a:hover {
   background-color: #21262d;
   border: 1px solid #30363d;
   border-radius: 10px;
-  padding: 1rem;
+  padding: 2rem 1rem;
   box-shadow: 0 0 10px rgba(88, 166, 255, 0.05);
   display: flex;
   align-items: center;
@@ -153,11 +153,8 @@ nav a:hover {
   max-height: 100px;
   object-fit: contain;
   display: block;
+  border-radius: 6px;
 }
-.skill-group {
-  padding: 2rem 1rem;
-}
-
 
 /* === LINKS === */
 a {
