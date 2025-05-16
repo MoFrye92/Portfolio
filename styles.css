@@ -63,6 +63,20 @@ h2, h3 {
 .project:hover {
   transform: scale(1.02);
 }
+.resume-btn {
+  background-color: #238636;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.resume-btn:hover {
+  background-color: #2ea043;
+}
+
 
 footer {
   text-align: center;
