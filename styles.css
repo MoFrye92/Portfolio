@@ -148,10 +148,16 @@ nav a:hover {
 }
 
 .skill-group img {
-  max-width: 100%;
+  width: 120px;
   height: auto;
-  border-radius: 6px;
+  max-height: 100px;
+  object-fit: contain;
+  display: block;
 }
+.skill-group {
+  padding: 2rem 1rem;
+}
+
 
 /* === LINKS === */
 a {
