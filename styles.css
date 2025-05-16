@@ -127,3 +127,36 @@ footer a:hover {
     grid-template-columns: 1fr;
   }
 }
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.project {
+  background-color: #21262d;
+  border: 1px solid #30363d;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.project h3 {
+  margin-top: 0;
+  color: #58a6ff;
+}
+
+.project a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #58a6ff;
+  font-weight: bold;
+}
+
