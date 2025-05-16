@@ -204,3 +204,40 @@ footer a:hover {
     font-size: 2rem;
   }
 }
+#testimonials {
+  padding: 2rem 1rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+#testimonials h2 {
+  color: #58a6ff;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.testimonial {
+  background-color: #21262d;
+  border: 1px solid #30363d;
+  padding: 1.5rem;
+  border-radius: 10px;
+  color: #c9d1d9;
+  box-shadow: 0 4px 10px rgba(88, 166, 255, 0.05);
+  text-align: left;
+}
+
+.testimonial p {
+  margin-bottom: 1rem;
+}
+
+.testimonial .author {
+  font-weight: bold;
+  color: #8b949e;
+  margin-top: 0.5rem;
+}
