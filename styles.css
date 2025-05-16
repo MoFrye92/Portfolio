@@ -148,8 +148,8 @@ nav a:hover {
 }
 .skill-group img {
   width: 100%;
-  max-width: 200px;
-  max-height: 120px;
+  max-width: 240px;
+  max-height: 140px;
   height: auto;
   object-fit: contain;
   display: block;
