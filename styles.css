@@ -1,4 +1,4 @@
-/* === Base Layout === */
+/* === BASE LAYOUT === */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #0d1117;
@@ -26,22 +26,26 @@ hr {
   margin: 1rem 0;
 }
 
-/* === Header & Nav === */
+/* === HEADER SECTION === */
 header {
-  background-color: #161b22;
-  padding: 2rem 1rem;
+  background: linear-gradient(rgba(13, 17, 23, 0.85), rgba(13, 17, 23, 0.85)),
+              url('header-bg.png') no-repeat center center/cover;
+  padding: 4rem 2rem;
   text-align: center;
+  color: white;
 }
 
 header h1 {
   font-size: 2.5rem;
-  margin-bottom: 0.25rem;
+  color: #ffffff;
+  text-shadow: 0 0 10px #58a6ff88;
 }
 
 header p {
   font-style: italic;
   color: #8b949e;
   font-size: 1rem;
+  margin-top: 0.5rem;
 }
 
 nav {
@@ -67,66 +71,17 @@ nav a:hover {
   border-radius: 6px;
   margin-left: 1rem;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 0 10px #23863688;
+  transition: all 0.3s ease;
 }
 
 .resume-btn:hover {
   background-color: #2ea043;
+  box-shadow: 0 0 15px #2ea043aa;
+  transform: scale(1.05);
 }
 
-/* === Project Grid === */
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.project {
-  background-color: #21262d;
-  padding: 1rem 1.5rem;
-  border-radius: 10px;
-  transition: transform 0.2s;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
-
-.project:hover {
-  transform: scale(1.02);
-}
-
-a {
-  color: #58a6ff;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* === Footer === */
-footer {
-  text-align: center;
-  padding: 1.5rem 1rem;
-  background-color: #161b22;
-  font-size: 0.9rem;
-  color: #8b949e;
-}
-
-footer a {
-  color: #58a6ff;
-  text-decoration: none;
-  margin: 0 0.5rem;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-
-/* === Responsive === */
-@media (max-width: 768px) {
-  .projects {
-    grid-template-columns: 1fr;
-  }
-}
+/* === PROJECTS SECTION === */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -159,58 +114,93 @@ footer a:hover {
   color: #58a6ff;
   font-weight: bold;
 }
-#skills i {
-  color: #58a6ff;
-  margin-right: 8px;
-  width: 20px;
+
+/* === SKILLS STACK === */
+#stack {
+  padding: 2rem 1rem;
+  text-align: left;
 }
-#skills ul {
+
+#stack h2 {
+  text-align: center;
+  color: #58a6ff;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.stack-category {
+  margin-bottom: 2rem;
+}
+
+.stack-category h3 {
+  color: #c9d1d9;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid #58a6ff;
+  padding-left: 10px;
+  text-transform: uppercase;
+}
+
+.stack-list {
   list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
   padding-left: 0;
 }
 
-#skills li {
-  margin-bottom: 0.75rem;
+.stack-list li {
   display: flex;
   align-items: center;
-  line-height: 1.5;
+  gap: 0.5rem;
+  background-color: #21262d;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(88, 166, 255, 0.1);
+  color: #c9d1d9;
+  font-weight: 500;
 }
 
-#skills i {
-  color: #58a6ff;
-  margin-right: 10px;
-  min-width: 22px;
-  text-align: center;
-  font-size: 1rem;
-}
-#skills h2 {
-  color: #58a6ff;
-  text-shadow: 0 0 5px #58a6ff44;
-  position: relative;
+.stack-list img {
+  width: 24px;
+  height: 24px;
 }
 
-#skills h2::after {
-  content: '';
-  display: block;
-  height: 2px;
-  width: 60px;
-  background: #58a6ff;
-  margin-top: 0.5rem;
-  border-radius: 10px;
+/* === LINKS === */
+a {
+  color: #58a6ff;
+  text-decoration: none;
 }
-header {
-  background: linear-gradient(rgba(13, 17, 23, 0.85), rgba(13, 17, 23, 0.85)),
-              url('header-bg.png') no-repeat center center/cover;
-  padding: 4rem 2rem;
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* === FOOTER === */
+footer {
   text-align: center;
-  color: white;
+  padding: 1.5rem 1rem;
+  background-color: #161b22;
+  font-size: 0.9rem;
+  color: #8b949e;
 }
-header h1 {
-  font-size: 2.5rem;
-  color: #ffffff;
-  text-shadow: 0 0 10px #58a6ff88;
+
+footer a {
+  color: #58a6ff;
+  text-decoration: none;
+  margin: 0 0.5rem;
 }
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
+  .projects {
+    grid-template-columns: 1fr;
+  }
+
   header {
     padding: 3rem 1rem;
     background-position: center top;
@@ -221,3 +211,8 @@ header h1 {
   }
 }
 
+/* === HUMAN TOUCH NOTES === */
+/* - Mo Mode activated with stack-style grid using resume tech
+   - Dark contrast boxes with tech logos and titles
+   - Skills broken out by category for quick scannability
+   - Consistent shadows and spacing across all blocks */
