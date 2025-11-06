@@ -1,29 +1,32 @@
 /* =========================================
-   🌙 THEME VARIABLES
+   🎨 THEME VARIABLES — A3-Lite-D (Mo Mode: Edgy Medium)
    ========================================= */
+
+/* Default Theme: DARK */
 :root {
-  /* Light Theme (Soft Light) */
-  --color-bg: #f6f6f9;
-  --color-text: #1a1a1d;
+  --color-bg: #0E0E11;
+  --color-text: #E8E8F2;
+  --color-text-light: #A6A7B3;
+  --color-accent: #9b5cff; /* Electric purple */
+  --color-card-bg: #16171B;
+  --color-border: #26272D;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --color-bg: #F6F6F9;
+  --color-text: #1A1A1D;
   --color-text-light: #333;
   --color-accent: #9b5cff;
-  --color-card-bg: #ffffff;
-  --color-border: #dcdce3;
+  --color-card-bg: #FFFFFF;
+  --color-border: #DCDCE3;
 }
 
-[data-theme="dark"] {
-  /* Dark Theme (Soft Dark) */
-  --color-bg: #111216;
-  --color-text: #e6e6eb;
-  --color-text-light: #b7b7c4;
-  --color-accent: #9b5cff;
-  --color-card-bg: #1a1b20;
-  --color-border: #2b2c31;
-}
+/* Smooth scroll + transitions */
+html { scroll-behavior: smooth; }
 
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
+body, section, .project-card, .skill-card {
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
 /* =========================================
@@ -42,10 +45,34 @@ body {
   line-height: 1.6;
 }
 
-/* Typography */
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
 h1, h2, h3 {
   font-weight: 600;
   color: var(--color-text);
+}
+
+h4, h5, h6 {
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+
+h4 { font-size: 1.25rem; }
+
+/* 🔥 Tech Label Header */
+h5 {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 0.5rem;
+}
+
+h6 {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
 }
 
 p {
@@ -53,12 +80,16 @@ p {
   font-weight: 300;
 }
 
-/* Layout container */
-section {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem 1.5rem;
+/* Optional Mini Section Label */
+.section-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 0.4rem;
+  display: block;
+  opacity: 0.9;
 }
 
 /* =========================================
@@ -99,9 +130,7 @@ section {
 }
 
 /* Mobile toggles hidden on desktop */
-.mobile-only {
-  display: none;
-}
+.mobile-only { display: none; }
 
 /* =========================================
    THEME TOGGLE SWITCH
@@ -112,9 +141,7 @@ section {
   gap: 0.5rem;
 }
 
-.theme-toggle input {
-  display: none;
-}
+.theme-toggle input { display: none; }
 
 .toggle {
   width: 42px;
@@ -198,9 +225,7 @@ input:checked + .toggle::after {
   font-size: 1.1rem;
 }
 
-.mobile-toggle {
-  margin-top: auto;
-}
+.mobile-toggle { margin-top: auto; }
 
 /* =========================================
    HERO SECTION
@@ -240,6 +265,7 @@ input:checked + .toggle::after {
 .primary:hover {
   filter: brightness(1.08);
   transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(155, 92, 255, 0.5);
 }
 
 .secondary {
@@ -251,12 +277,6 @@ input:checked + .toggle::after {
   background: var(--color-accent);
   color: #fff;
   transform: translateY(-2px);
-}
-
-.hero-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
 }
 
 /* =========================================
@@ -308,9 +328,17 @@ input:checked + .toggle::after {
   border-color: var(--color-accent);
 }
 
+/* 🔥 Tech Tag Badge */
 .tech {
-  font-size: 0.8rem;
-  opacity: 0.8;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(155, 92, 255, 0.08);
+  padding: 4px 8px;
+  border-radius: 4px;
+  width: fit-content;
 }
 
 .project-btn {
@@ -341,12 +369,6 @@ input:checked + .toggle::after {
    RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
-  .desktop-only {
-    display: none;
-  }
-
-  .mobile-only {
-    display: block;
-  }
+  .desktop-only { display: none; }
+  .mobile-only { display: block; }
 }
-
