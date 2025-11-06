@@ -326,9 +326,69 @@ input:checked + .toggle::after {
   transform: translateY(-3px);
   border-color: var(--color-accent);
 }
+/* =========================================
+   TECH STACK SECTION
+========================================= */
+
+.tech-section {
+  margin-top: 4rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.tech-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.tech-group h5 {
+  margin-bottom: 0.3rem;
+}
+
+.tech-group p {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+}
+
+.tech-approach h4 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+
+.tech-approach ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding-left: 0;
+}
+
+.tech-approach li {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  line-height: 1.5;
+}
+
+/* Reveal when in view */
+section.visible.tech-section {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .tech-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 /* =========================================
-   PROJECTS
+   PROJECTS SECTION
    ========================================= */
 .project-grid {
   display: grid;
