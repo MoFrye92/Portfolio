@@ -12,19 +12,7 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
-  <script>
-  const sections = document.querySelectorAll("section");
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) entry.target.classList.add("visible");
-    });
-  }, { threshold: 0.2 });
-
-  sections.forEach((sec) => observer.observe(sec));
-</script>
-
 <body>
-
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-left">
@@ -73,7 +61,6 @@
   <section id="home" class="hero">
     <h1>Mo Frye</h1>
     <p>I turn ideas into simple, functional, and user-friendly digital builds.</p>
-
     <div class="hero-buttons">
       <a href="#projects" class="btn primary">View Projects</a>
       <a href="#contact" class="btn secondary">Contact Me</a>
@@ -104,7 +91,6 @@
     <h2>Featured Work</h2>
 
     <div class="project-grid">
-      <!-- Project 1 -->
       <div class="project-card">
         <h3>VibeCheckr Web App</h3>
         <p>A passion project that pairs journaling, music, and mood awareness in a simple, personal web experience designed to help users check in and reset their vibe.</p>
@@ -112,7 +98,6 @@
         <a href="vibecheckr.html" class="btn project-btn">View Details</a>
       </div>
 
-      <!-- Project 2 -->
       <div class="project-card">
         <h3>Data Analysis Pipeline</h3>
         <p>A hands-on data project covering the full process: raw data cleanup, analysis, visual storytelling, and insights — built to turn data into something useful and clear.</p>
@@ -120,7 +105,6 @@
         <a href="#" class="btn project-btn">View Details</a>
       </div>
 
-      <!-- Project 3 -->
       <div class="project-card">
         <h3>Network Security Plan</h3>
         <p>A graduate-level project that walks through building a network security plan from scratch — including risk assessments, asset reviews, and recommended controls.</p>
@@ -153,7 +137,18 @@
     <a href="mailto:YOUR_EMAIL@HERE.com" class="btn primary">Email Me</a>
   </section>
 
-  <!-- JavaScript -->
-  <script src="js/script.js"></script>
+  <!-- JavaScript (moved to bottom for proper load) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sections = document.querySelectorAll("section");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      }, { threshold: 0.2 });
+
+      sections.forEach((sec) => observer.observe(sec));
+    });
+  </script>
 </body>
 </html>
