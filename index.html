@@ -1,103 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Monique Frye - Coding Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <title>Mo Frye • Portfolio</title>
 
- 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
-  <header>
-    <h1>Monique Frye</h1>
-    <p>Computer Science Graduate | Creative Technologist | ERP & Inventory Ops Specialist | Problem Solver</p>
-    <nav>
-  
-<a href="assets/MoniqueFrye_Resume.pdf" download class="resume-btn">Download Resume</a>
 
-    </nav>
-  </header>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="#home" class="logo">Mo Frye</a>
+    </div>
 
-  <section id="about">
-    <h2>About Me</h2>
+    <!-- Desktop Nav Links -->
+    <ul class="nav-links desktop-only">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <!-- Desktop Theme Toggle -->
+    <div class="theme-toggle desktop-only">
+      <input type="checkbox" id="themeSwitch" />
+      <label for="themeSwitch" class="toggle"></label>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="menu-btn mobile-only" id="openMenu">☰</button>
+  </nav>
+
+  <!-- Mobile Modal Menu -->
+  <div class="mobile-menu-overlay" id="mobileMenu">
+    <div class="mobile-menu-content">
+      <button class="close-menu" id="closeMenu">✕</button>
+      <ul>
+        <li><a href="#home" class="mobile-link">Home</a></li>
+        <li><a href="#projects" class="mobile-link">Projects</a></li>
+        <li><a href="#skills" class="mobile-link">Skills</a></li>
+        <li><a href="#contact" class="mobile-link">Contact</a></li>
+      </ul>
+
+      <!-- Theme Toggle Inside Mobile Menu -->
+      <div class="theme-toggle mobile-toggle">
+        <span>Light / Dark</span>
+        <input type="checkbox" id="themeSwitchMobile" />
+        <label for="themeSwitchMobile" class="toggle"></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h1>Mo Frye</h1>
+    <p>I turn ideas into simple, functional, and user-friendly digital builds.</p>
+
+    <div class="hero-buttons">
+      <a href="#projects" class="btn primary">View Projects</a>
+      <a href="#contact" class="btn secondary">Contact Me</a>
+    </div>
+  </section>
+
+  <!-- Skills Snapshot -->
+  <section id="skills" class="skills">
+    <h2>Core Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Front-End Development</h3>
+        <p>Building clean, responsive pages that focus on clarity, usability, and a smooth experience.</p>
+      </div>
+      <div class="skill-card">
+        <h3>Python & Data Analysis</h3>
+        <p>Turning raw data into clear stories and visuals through cleaning, analysis, and automation.</p>
+      </div>
+      <div class="skill-card">
+        <h3>ERP & SAP Support</h3>
+        <p>Helping systems run smoothly through access support, workflow guidance, and documentation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section id="projects" class="projects">
+    <h2>Featured Work</h2>
+
+    <div class="project-grid">
+      <!-- Project 1 -->
+      <div class="project-card">
+        <h3>VibeCheckr Web App</h3>
+        <p>A passion project that pairs journaling, music, and mood awareness in a simple, personal web experience designed to help users check in and reset their vibe.</p>
+        <span class="tech">Tech: HTML, CSS, JavaScript</span>
+        <a href="vibecheckr.html" class="btn project-btn">View Details</a>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <h3>Data Analysis Pipeline</h3>
+        <p>A hands-on data project covering the full process: raw data cleanup, analysis, visual storytelling, and insights — built to turn data into something useful and clear.</p>
+        <span class="tech">Tech: Python (Pandas, NumPy, Matplotlib)</span>
+        <a href="#" class="btn project-btn">View Details</a>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card">
+        <h3>Network Security Plan</h3>
+        <p>A graduate-level project that walks through building a network security plan from scratch — including risk assessments, asset reviews, and recommended controls.</p>
+        <span class="tech">Focus: Network Security, Risk Analysis</span>
+        <a href="#" class="btn project-btn">View Details</a>
+      </div>
+    </div>
+
+    <a href="projects.html" class="btn secondary view-all">View All Projects →</a>
+  </section>
+
+  <!-- About Me -->
+  <section id="about" class="about">
+    <h2>A Bit About Me</h2>
     <p>
-      I'm Monique Frye—a creative technologist and results-driven operations leader with a passion for building tools that matter. 
-      I founded Jack Hatter LLC to house all my passions—coding, cybersecurity, fashion, and storytelling. With over a decade of experience leading ERP operations and inventory control across military, federal, and commercial sectors, I bring both strategic depth and imaginative problem-solving to the table.
+      I enjoy creating things that make sense to use and feel good to interact with. My background blends front-end development, data work, and ERP/SAP support — so I tend to look at problems from both a technical and a people-first angle.
     </p>
     <p>
-      Whether I’m building mood-tracking apps like <strong>VibeCheckr</strong>, developing a <strong>PCOS-friendly recipe platform</strong>, or crafting immersive audio stories, I thrive at the intersection of innovation, structure, and creativity.
+      I like exploring different creative lanes, whether that’s coding, data storytelling, or writing. No matter the medium, I focus on clarity, usability, and making things genuinely helpful.
+    </p>
+    <p>
+      I’m always learning, experimenting, and refining — and I enjoy the process just as much as the result.
     </p>
   </section>
 
-<section id="projects">
-  <h2>Projects</h2>
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <h2>Let’s Connect</h2>
+    <p>Have a project idea, a question, or just want to say hi?</p>
+    <a href="mailto:YOUR_EMAIL@HERE.com" class="btn primary">Email Me</a>
+  </section>
 
-  <div class="projects">
-    <div class="project">
-      <h3>ERP Inventory Tracker App</h3>
-      <p>A simulated ERP inventory control tool inspired by real-world military and federal logistics workflows. Features inventory reconciliation, audit logging, and E&O alerts.</p>
-      <p><strong>Tech Used:</strong> Python, Flask, SQL, HTML/CSS</p>
-      <a href="https://github.com/MoFrye92/inventory-dashboard">GitHub Repo</a>
-    </div>
-
-    <div class="project">
-      <h3>VibeCheckr</h3>
-      <p>Mood-driven journaling and playlist syncing app, blending mental wellness and tech with a personal twist. Users can log moods, write journal entries, and receive custom music recommendations.</p>
-      <p><strong>Tech Used:</strong> React, Firebase, JavaScript</p>
-      <a href="https://github.com/MoFrye92/VibeCheckr">GitHub Repo</a>
-    </div>
-
-    <div class="project">
-      <h3>PCOS-Friendly Recipe App</h3>
-      <p>A recipe tracking and meal planning app for PCOS-friendly living. Filters meals by category, saves favorites, and includes nutrition tags for hormonal balance support.</p>
-      <p><strong>Tech Used:</strong> Django, HTML/CSS, PostgreSQL</p>
-      <a href="https://github.com/MoFrye92/pcos-recipe-book">GitHub Repo</a>
-    </div>
-  </div>
-</section>
-
-
-  <section id="resume">
-    <h2>Education</h2>
-    <hr>
-    <p><b>Bachelor of Science in Computer Science</b><br>Colorado Technical University | 2024</p>
-    <p><b>Master of Science in Computer Science</b><br>Colorado Technical University | 2025</p>
- 
-<section id="skills">
-  <h2>Skills & Tools</h2>
-  <div class="skills-grid">
-    <div class="skill-group"><img src="Languages.png" alt="Languages" /></div>
-    <div class="skill-group"><img src="ERP.png" alt="ERP Systems" /></div>
-    <div class="skill-group"><img src="Tools.png" alt="Tools" /></div>
-    <div class="skill-group"><img src="Leadership.png" alt="Leadership" /></div>
-    <div class="skill-group"><img src="Systems.png" alt="Operating Systems" /></div>
-    <div class="skill-group"><img src="Softskills.png" alt="Soft Skills" /></div>
-  </div>
-</section>
-
-    <section id="testimonials">
-  <h2>What People Say</h2>
-
-  <div class="testimonial-grid">
-    <div class="testimonial">
-      <p>“Monique has been my team lead on a government contract... She provides great leadership, and subject matter expertise to the team. Monique has a bright future ahead.”</p>
-      <p class="author">— Osvaldo Cruz, MBA</p>
-    </div>
-
-    <div class="testimonial">
-      <p>“Mo is a true asset, combining their skills with a collaborative spirit that positively influences the entire team dynamic... If you have the opportunity to work with them, I'm certain you'll witness the same dedication and expertise.”</p>
-      <p class="author">— Angel A. Ponce</p>
-    </div>
-  </div>
-</section>
-
-
-
-<footer>
-    <p>&copy; 2025 Monique Frye | <a href="mailto:Monique.L.Frye@gmail.com">Monique.L.Frye@gmail.com</a></p>
-    <p><a href="https://www.linkedin.com/in/monique-frye">LinkedIn</a> | <a href="https://github.com/MoFrye92">GitHub</a></p>
-  </footer>
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
 </body>
 </html>
