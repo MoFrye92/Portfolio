@@ -1,26 +1,41 @@
 /* =========================================
-   🎨 THEME VARIABLES — A3-Lite-D (Mo Mode: Edgy Medium)
+   🎨 THEME VARIABLES  (Mo Mode: Edgy Medium)
    ========================================= */
 
 /* Default Theme: DARK */
-:root {
-  --color-bg: #0E0E11;
-  --color-text: #E8E8F2;
-  --color-text-light: #A6A7B3;
-  --color-accent: #9b5cff; /* Electric purple */
-  --color-card-bg: #16171B;
-  --color-border: #26272D;
+:root { ... }                   /* Dark mode base */
+[data-theme="light"] { ... }    /* Light theme colors */
+[data-theme="light"] .skill-card,
+[data-theme="light"] .project-card,
+[data-theme="light"] .navbar,
+[data-theme="light"] .hero,
+[data-theme="light"] section { ... }  /* Soft shadows */
+
+
+/* Light Theme — A3-Lite-L (Soft Studio Light) */
+[data-theme="light"] {
+  --color-bg: #f7f8fa;              /* soft neutral background */
+  --color-text: #1b1b1f;            /* balanced dark text */
+  --color-text-light: #4c4c58;      /* medium gray for paragraphs */
+  --color-accent: #9b5cff;          /* brand purple (unchanged) */
+  --color-card-bg: #ffffff;         /* pure white cards */
+  --color-border: #e1e2e8;          /* gentle border tone */
+}
+/* Light Mode Enhancements — Soft Shadows */
+[data-theme="light"] .skill-card,
+[data-theme="light"] .project-card,
+[data-theme="light"] .navbar,
+[data-theme="light"] .hero,
+[data-theme="light"] section {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
-/* Light Theme */
-[data-theme="light"] {
-  --color-bg: #F6F6F9;
-  --color-text: #1A1A1D;
-  --color-text-light: #333;
-  --color-accent: #9b5cff;
-  --color-card-bg: #FFFFFF;
-  --color-border: #DCDCE3;
+[data-theme="light"] .project-card:hover,
+[data-theme="light"] .skill-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+
 
 /* Smooth scroll + transitions */
 html { scroll-behavior: smooth; }
@@ -371,4 +386,58 @@ input:checked + .toggle::after {
 @media (max-width: 768px) {
   .desktop-only { display: none; }
   .mobile-only { display: block; }
+}
+/* =========================================
+   ANIMATION SYSTEM —  (Soft Studio)
+   ========================================= */
+
+/* --- 1. Hero Fade-In + Rise --- */
+.hero {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeIn 1.2s ease-out forwards;
+}
+
+@keyframes heroFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- 2. Section Headers Fade-In on Scroll --- */
+section h2 {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+section.visible h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- 3. Cards (Skills + Projects) Gentle Float-Up --- */
+.skill-card,
+.project-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.visible .skill-card,
+section.visible .project-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Scroll Reveal Logic --- */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
