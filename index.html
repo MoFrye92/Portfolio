@@ -61,6 +61,7 @@
   <section id="home" class="hero">
     <h1>Mo Frye</h1>
     <p>I turn ideas into simple, functional, and user-friendly digital builds.</p>
+
     <div class="hero-buttons">
       <a href="#projects" class="btn primary">View Projects</a>
       <a href="#contact" class="btn secondary">Contact Me</a>
@@ -93,21 +94,21 @@
     <div class="project-grid">
       <div class="project-card">
         <h3>VibeCheckr Web App</h3>
-        <p>A passion project that pairs journaling, music, and mood awareness in a simple, personal web experience designed to help users check in and reset their vibe.</p>
+        <p>A passion project combining journaling, music, and mood awareness into a personal web experience.</p>
         <span class="tech">Tech: HTML, CSS, JavaScript</span>
         <a href="vibecheckr.html" class="btn project-btn">View Details</a>
       </div>
 
       <div class="project-card">
         <h3>Data Analysis Pipeline</h3>
-        <p>A hands-on data project covering the full process: raw data cleanup, analysis, visual storytelling, and insights — built to turn data into something useful and clear.</p>
+        <p>Full workflow: data cleaning, analysis, and visualization — turning messy data into clear insights.</p>
         <span class="tech">Tech: Python (Pandas, NumPy, Matplotlib)</span>
         <a href="#" class="btn project-btn">View Details</a>
       </div>
 
       <div class="project-card">
         <h3>Network Security Plan</h3>
-        <p>A graduate-level project that walks through building a network security plan from scratch — including risk assessments, asset reviews, and recommended controls.</p>
+        <p>Graduate-level project outlining network security planning, risk assessments, and policy recommendations.</p>
         <span class="tech">Focus: Network Security, Risk Analysis</span>
         <a href="#" class="btn project-btn">View Details</a>
       </div>
@@ -119,15 +120,8 @@
   <!-- About Me -->
   <section id="about" class="about">
     <h2>A Bit About Me</h2>
-    <p>
-      I enjoy creating things that make sense to use and feel good to interact with. My background blends front-end development, data work, and ERP/SAP support — so I tend to look at problems from both a technical and a people-first angle.
-    </p>
-    <p>
-      I like exploring different creative lanes, whether that’s coding, data storytelling, or writing. No matter the medium, I focus on clarity, usability, and making things genuinely helpful.
-    </p>
-    <p>
-      I’m always learning, experimenting, and refining — and I enjoy the process just as much as the result.
-    </p>
+    <p>I enjoy creating things that make sense to use and feel good to interact with. My background blends front-end development, data work, and ERP/SAP support — so I tend to look at problems from both a technical and people-first angle.</p>
+    <p>I like exploring different creative lanes — coding, data storytelling, writing — always focusing on clarity, usability, and making things genuinely helpful.</p>
   </section>
 
   <!-- Contact -->
@@ -137,18 +131,7 @@
     <a href="mailto:YOUR_EMAIL@HERE.com" class="btn primary">Email Me</a>
   </section>
 
-  <!-- JavaScript (moved to bottom for proper load) -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const sections = document.querySelectorAll("section");
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("visible");
-        });
-      }, { threshold: 0.2 });
-
-      sections.forEach((sec) => observer.observe(sec));
-    });
-  </script>
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
 </body>
 </html>
