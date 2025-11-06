@@ -1,1 +1,352 @@
+/* =========================================
+   🌙 THEME VARIABLES
+   ========================================= */
+:root {
+  /* Light Theme (Soft Light) */
+  --color-bg: #f6f6f9;
+  --color-text: #1a1a1d;
+  --color-text-light: #333;
+  --color-accent: #9b5cff;
+  --color-card-bg: #ffffff;
+  --color-border: #dcdce3;
+}
+
+[data-theme="dark"] {
+  /* Dark Theme (Soft Dark) */
+  --color-bg: #111216;
+  --color-text: #e6e6eb;
+  --color-text-light: #b7b7c4;
+  --color-accent: #9b5cff;
+  --color-card-bg: #1a1b20;
+  --color-border: #2b2c31;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================================
+   BASE & RESET
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+p {
+  color: var(--color-text-light);
+  font-weight: 300;
+}
+
+/* Layout container */
+section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+.navbar {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 400;
+  transition: 0.25s ease;
+}
+
+.nav-links a:hover {
+  color: var(--color-accent);
+}
+
+/* Mobile toggles hidden on desktop */
+.mobile-only {
+  display: none;
+}
+
+/* =========================================
+   THEME TOGGLE SWITCH
+   ========================================= */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-toggle input {
+  display: none;
+}
+
+.toggle {
+  width: 42px;
+  height: 22px;
+  background: var(--color-border);
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.toggle::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background: var(--color-card-bg);
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: 0.3s ease;
+}
+
+input:checked + .toggle {
+  background: var(--color-accent);
+}
+
+input:checked + .toggle::after {
+  transform: translateX(20px);
+}
+
+/* =========================================
+   MOBILE MENU
+   ========================================= */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(4px);
+  display: none;
+  justify-content: flex-end;
+  z-index: 100;
+}
+
+.mobile-menu-content {
+  width: 70%;
+  max-width: 300px;
+  background: var(--color-card-bg);
+  height: 100%;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.close-menu {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  align-self: flex-end;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.mobile-menu-content ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-menu-content a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.mobile-toggle {
+  margin-top: auto;
+}
+
+/* =========================================
+   HERO SECTION
+   ========================================= */
+.hero {
+  text-align: center;
+  padding-top: 6rem;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  max-width: 650px;
+  margin: 0.5rem auto 2rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.primary {
+  background: var(--color-accent);
+  color: white;
+}
+
+.primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+
+.secondary {
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+}
+
+.secondary:hover {
+  background: var(--color-accent);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* =========================================
+   SKILLS SECTION
+   ========================================= */
+.skills-grid {
+  display: grid;
+  gap: 1.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 2rem;
+}
+
+.skill-card {
+  background: var(--color-card-bg);
+  padding: 1.8rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  transition: 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-accent);
+}
+
+/* =========================================
+   PROJECTS
+   ========================================= */
+.project-grid {
+  display: grid;
+  gap: 1.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  margin-top: 2.5rem;
+}
+
+.project-card {
+  background: var(--color-card-bg);
+  padding: 1.8rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-accent);
+}
+
+.tech {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.project-btn {
+  margin-top: auto;
+  width: fit-content;
+}
+
+/* =========================================
+   ABOUT SECTION
+   ========================================= */
+.about p {
+  max-width: 850px;
+  margin-bottom: 1rem;
+}
+
+/* =========================================
+   CONTACT SECTION
+   ========================================= */
+.contact {
+  text-align: center;
+}
+
+.contact p {
+  margin-bottom: 1.5rem;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+}
 
