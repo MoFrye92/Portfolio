@@ -3,25 +3,26 @@
    ========================================= */
 
 /* Default Theme: DARK */
-:root { ... }                   /* Dark mode base */
-[data-theme="light"] { ... }    /* Light theme colors */
-[data-theme="light"] .skill-card,
-[data-theme="light"] .project-card,
-[data-theme="light"] .navbar,
-[data-theme="light"] .hero,
-[data-theme="light"] section { ... }  /* Soft shadows */
-
+:root {
+  --color-bg: #0f0f12;           /* deep neutral background */
+  --color-text: #f5f5f7;         /* bright readable text */
+  --color-text-light: #b3b3b8;   /* subtle gray for paragraphs */
+  --color-accent: #9b5cff;       /* brand purple */
+  --color-card-bg: #1a1a1d;      /* dark surface card */
+  --color-border: #2a2a2d;       /* divider tone */
+}
 
 /* Light Theme — A3-Lite-L (Soft Studio Light) */
 [data-theme="light"] {
-  --color-bg: #f7f8fa;              /* soft neutral background */
-  --color-text: #1b1b1f;            /* balanced dark text */
-  --color-text-light: #4c4c58;      /* medium gray for paragraphs */
-  --color-accent: #9b5cff;          /* brand purple (unchanged) */
-  --color-card-bg: #ffffff;         /* pure white cards */
-  --color-border: #e1e2e8;          /* gentle border tone */
+  --color-bg: #f7f8fa;           /* soft neutral background */
+  --color-text: #1b1b1f;         /* balanced dark text */
+  --color-text-light: #4c4c58;   /* medium gray for paragraphs */
+  --color-accent: #9b5cff;       /* brand purple (unchanged) */
+  --color-card-bg: #ffffff;      /* pure white cards */
+  --color-border: #e1e2e8;       /* gentle border tone */
 }
-/* Light Mode Enhancements — Soft Shadows */
+
+/* Light Mode — Soft Shadows */
 [data-theme="light"] .skill-card,
 [data-theme="light"] .project-card,
 [data-theme="light"] .navbar,
@@ -35,15 +36,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-
-
-/* Smooth scroll + transitions */
-html { scroll-behavior: smooth; }
-
-body, section, .project-card, .skill-card {
-  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
-}
-
 /* =========================================
    BASE & RESET
    ========================================= */
@@ -53,11 +45,16 @@ body, section, .project-card, .skill-card {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   background: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 /* =========================================
@@ -95,7 +92,6 @@ p {
   font-weight: 300;
 }
 
-/* Optional Mini Section Label */
 .section-label {
   font-size: 0.78rem;
   font-weight: 500;
@@ -118,6 +114,10 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: var(--color-bg);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .logo {
@@ -144,7 +144,6 @@ p {
   color: var(--color-accent);
 }
 
-/* Mobile toggles hidden on desktop */
 .mobile-only { display: none; }
 
 /* =========================================
@@ -248,6 +247,14 @@ input:checked + .toggle::after {
 .hero {
   text-align: center;
   padding-top: 6rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeIn 1.2s ease-out forwards;
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .hero h1 {
@@ -310,6 +317,9 @@ input:checked + .toggle::after {
   border-radius: 8px;
   border: 1px solid var(--color-border);
   transition: 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .skill-card:hover {
@@ -336,6 +346,9 @@ input:checked + .toggle::after {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .project-card:hover {
@@ -381,63 +394,27 @@ input:checked + .toggle::after {
 }
 
 /* =========================================
+   SCROLL REVEAL ANIMATIONS
+   ========================================= */
+section.visible .skill-card,
+section.visible .project-card,
+section.visible h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
    RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
   .desktop-only { display: none; }
   .mobile-only { display: block; }
 }
+
 /* =========================================
-   ANIMATION SYSTEM —  (Soft Studio)
+   ACCESSIBILITY — Motion Pref
    ========================================= */
-
-/* --- 1. Hero Fade-In + Rise --- */
-.hero {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: heroFadeIn 1.2s ease-out forwards;
-}
-
-@keyframes heroFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* --- 2. Section Headers Fade-In on Scroll --- */
-section h2 {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-section.visible h2 {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* --- 3. Cards (Skills + Projects) Gentle Float-Up --- */
-.skill-card,
-.project-card {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-section.visible .skill-card,
-section.visible .project-card {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* --- Scroll Reveal Logic --- */
 @media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 }
+
