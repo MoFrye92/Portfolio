@@ -417,4 +417,45 @@ section.visible h2 {
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
 }
+/* =========================================
+   ✨ ATMOSPHERE LAYER — Warm Vinyl Night
+   ========================================= */
+
+/* Subtle grain overlay */
+.atmo-grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  opacity: 0.18;
+  background-image: url('https://i.imgur.com/aV6ZCwH.png'); /* subtle grain texture */
+  background-size: cover;
+  mix-blend-mode: overlay;
+}
+
+/* Warm tint overlay (Moody Purple Nights + Warmth) */
+.atmo-warm {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(155, 92, 255, 0.12) 0%,
+      rgba(255, 172, 120, 0.09) 40%,
+      rgba(0, 0, 0, 0.38) 100%
+  );
+  mix-blend-mode: soft-light;
+}
+
+/* Light mode adjustments (slightly softer) */
+[data-theme="light"] .atmo-warm {
+  opacity: 0.8;
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(155, 92, 255, 0.10) 0%,
+      rgba(255, 207, 158, 0.08) 40%,
+      rgba(255, 255, 255, 0.55) 100%
+  );
+}
 
