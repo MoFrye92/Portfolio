@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VibeCheckr Swipe Cards Demo</title>
-  <meta name="description" content="Swipe through moods in VibeCheckr — a creative, music‑infused mood check‑in experience.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VibeCheckr — Pastel Swipe Cards</title>
+  <meta name="description" content="Experience the VibeCheckr mood picker in a beautiful pastel and glass design. Swipe through moods, see song suggestions, and journal your vibes." />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <!-- Main stylesheet -->
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css" />
 
-  <!-- Styles specific to swipe cards -->
+  <!-- Pastel & Glassmorphism styles -->
   <style>
+    /* Container styling */
     .vibe-container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 3rem 1.5rem;
+      padding: 4rem 1.5rem;
       text-align: center;
     }
     .vibe-container h1 {
@@ -31,6 +32,7 @@
       font-size: 0.95rem;
     }
 
+    /* Swipe cards styling */
     .swipe-container {
       display: flex;
       overflow-x: auto;
@@ -42,72 +44,57 @@
     .mood-card {
       flex: 0 0 280px;
       scroll-snap-align: center;
-      border-radius: 12px;
-      color: #fff;
-      padding: 1.5rem;
-      position: relative;
+      border-radius: 16px;
+      color: #2d2d2d;
+      padding: 2rem 1.5rem;
       cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    .mood-card:hover {
-      transform: translateY(-4px);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      position: relative;
+      backdrop-filter: blur(2px); /* slight blur so text stands out */
     }
     .mood-card h3 {
       margin-bottom: 0.5rem;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
+      font-weight: 600;
     }
     .mood-card p.desc {
       font-size: 0.85rem;
-      margin-bottom: 1rem;
-      opacity: 0.9;
+      margin-bottom: 1.2rem;
+      opacity: 0.8;
     }
     .mood-card p.song {
       font-size: 0.75rem;
-      opacity: 0.8;
-      font-family: 'Roboto Mono', monospace;
+      font-family: "Roboto Mono", monospace;
+      opacity: 0.7;
+    }
+    .mood-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     }
 
-    /* Journal & feedback */
-    .journal-section {
-      display: none;
-      margin-top: 3rem;
-    }
-    .journal-section textarea {
-      width: 100%;
-      min-height: 100px;
-      padding: 0.8rem;
-      border-radius: 6px;
-      border: 1px solid var(--color-border);
-      background: var(--color-card-bg);
-      color: var(--color-text);
-      font-size: 0.9rem;
-    }
-    .journal-section .btn {
-      margin-top: 1rem;
-    }
-    .vibe-message {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: var(--color-text-light);
-      display: none;
-    }
-    .music-suggestion {
+    /* Glass panels for music suggestion & journal */
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      padding: 1.5rem;
       margin-top: 2rem;
+    }
+
+    .music-suggestion {
       display: none;
     }
-    .music-suggestion .music-card {
+    .music-card {
       display: flex;
       align-items: center;
       gap: 1rem;
-      background: var(--color-card-bg);
-      padding: 1rem;
-      border-radius: 8px;
-      border: 1px solid var(--color-border);
     }
     .music-cover {
-      width: 60px;
-      height: 60px;
-      border-radius: 6px;
+      width: 64px;
+      height: 64px;
+      border-radius: 8px;
       flex-shrink: 0;
       background-size: cover;
       background-position: center;
@@ -115,12 +102,57 @@
     .music-info h4 {
       margin: 0;
       font-size: 1rem;
+      color: var(--color-text);
     }
     .music-info p {
       margin: 0.2rem 0 0;
       font-size: 0.85rem;
-      opacity: 0.8;
+      color: var(--color-text-light);
     }
+
+    .vibe-message {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+      display: none;
+    }
+
+    .journal-section {
+      display: none;
+      margin-top: 3rem;
+    }
+    .journal-section textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      color: var(--color-text);
+      font-size: 0.9rem;
+    }
+    .journal-section .btn {
+      margin-top: 1rem;
+    }
+
+    /* Past entries styling */
+    .past-entries {
+      margin-top: 3rem;
+      text-align: left;
+    }
+    .past-entry {
+      margin-bottom: 0.8rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      font-size: 0.85rem;
+      color: var(--color-text);
+      backdrop-filter: blur(6px);
+    }
+
+    /* Pastel gradient definitions per mood will be set via JS */
   </style>
 </head>
 <body>
@@ -142,7 +174,7 @@
     <button class="menu-btn mobile-only" id="openMenu">☰</button>
   </nav>
 
-  <!-- Mobile menu (same as other pages) -->
+  <!-- Mobile menu -->
   <div class="mobile-menu-overlay" id="mobileMenu">
     <div class="mobile-menu-content">
       <button class="close-menu" id="closeMenu">✕</button>
@@ -160,17 +192,15 @@
     </div>
   </div>
 
-  <!-- Swipe Cards Demo -->
+  <!-- Main content -->
   <main class="vibe-container">
     <h1>Swipe Your Vibe</h1>
-    <p class="lead">Slide through the moods below. Tap a card to select your vibe, read a gentle message and see a song suggestion.</p>
+    <p class="lead">Slide through these moods. Tap a card to select your vibe and see a curated song + message.</p>
 
-    <div class="swipe-container" id="swipeContainer">
-      <!-- Cards will be inserted via JS -->
-    </div>
+    <div class="swipe-container" id="swipeContainer"></div>
 
-    <!-- Music suggestion & message -->
-    <div id="musicSuggestion" class="music-suggestion">
+    <!-- Suggestion card with glass panel -->
+    <div id="musicSuggestion" class="music-suggestion glass-panel">
       <div class="music-card">
         <div class="music-cover"></div>
         <div class="music-info">
@@ -182,7 +212,7 @@
     <p id="vibeMessage" class="vibe-message"></p>
 
     <!-- Journal -->
-    <div class="journal-section" id="journalSection">
+    <div class="journal-section glass-panel" id="journalSection">
       <h2>Your mood: <span id="selectedMoodName"></span></h2>
       <textarea id="journalInput" placeholder="Write a quick reflection (optional)..."></textarea>
       <button class="btn primary" id="saveEntryBtn">Save Entry</button>
@@ -195,113 +225,113 @@
     </div>
   </main>
 
-  <!-- Include the core script for theme/menu -->
+  <!-- Core script -->
   <script src="js/script.js" defer></script>
 
-  <!-- Swipe cards script -->
+  <!-- Swipe & mood logic -->
   <script defer>
     document.addEventListener('DOMContentLoaded', () => {
-      // Mood configuration for swipe cards
+      // Mood configuration with pastel gradients
       const moods = [
         {
           name: 'Feeling Good',
           desc: 'Positive, content, or generally okay',
-          color: '#8ED081',
+          gradient: 'linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%)',
           song: { title: 'Good as Hell', artist: 'Lizzo' },
           message: 'We love a good vibe. Want to bottle this moment with a quick note or a song that matches?'
         },
         {
           name: 'Inspired',
           desc: 'Creative, motivated, sparked by something',
-          color: '#FFCE70',
+          gradient: 'linear-gradient(135deg, #FFF1EB 0%, #ACE0F9 100%)',
           song: { title: 'Dreams', artist: 'Fleetwood Mac' },
           message: 'Ride that wave of inspiration. Want to capture your idea or amplify it with a soundtrack?'
         },
         {
           name: 'In the Zone',
           desc: 'Focused, productive, making progress',
-          color: '#F9A36E',
+          gradient: 'linear-gradient(135deg, #FCE38A 0%, #F38181 100%)',
           song: { title: 'Eye of the Tiger', artist: 'Survivor' },
           message: 'Stay in that zone! Drop a note to keep momentum or enjoy a track to keep you going.'
         },
         {
           name: 'Chill / Relaxed',
           desc: 'Calm, peaceful, taking it easy',
-          color: '#81C7E5',
+          gradient: 'linear-gradient(135deg, #B5FFFC 0%, #FFE6FA 100%)',
           song: { title: 'Weightless', artist: 'Marconi Union' },
           message: 'Keep coasting. Want to capture that chill or vibe with some mellow tunes?'
         },
         {
           name: 'Drained',
           desc: 'Low energy, mentally/physically tired',
-          color: '#B0B0B0',
+          gradient: 'linear-gradient(135deg, #E0EAFC 0%, #CFDEF3 100%)',
           song: { title: 'Fix You', artist: 'Coldplay' },
           message: 'Got you — brain’s doing the absolute most today. You don’t have to fix anything right now. Want a tiny reset or to get it off your chest?'
         },
         {
           name: 'Stressed',
           desc: 'Pressured, overwhelmed, tense',
-          color: '#E7827C',
+          gradient: 'linear-gradient(135deg, #FFECD2 0%, #FCB69F 100%)',
           song: { title: 'Breathe', artist: 'Télépopmusik' },
           message: 'Deep breath — you’re not alone in that feeling. Wanna unpack it gently or just shift the vibe a bit?'
         },
         {
           name: 'Feeling Low',
           desc: 'Sad, down, emotionally heavy',
-          color: '#7C8FB2',
+          gradient: 'linear-gradient(135deg, #C9D6FF 0%, #E2E2E2 100%)',
           song: { title: 'Someone Like You', artist: 'Adele' },
           message: 'It’s okay to feel low. Want to write it out or shift the mood softly?'
         },
         {
           name: 'On Edge',
           desc: 'Anxious, irritable, restless',
-          color: '#A78DFF',
+          gradient: 'linear-gradient(135deg, #D4FC79 0%, #96E6A1 100%)',
           song: { title: 'Stressed Out', artist: 'Twenty One Pilots' },
           message: 'Deep breath — you’re not alone in that feeling. Wanna unpack it gently or just shift the vibe a bit?'
         }
       ];
 
+      // DOM references
       const swipeContainer = document.getElementById('swipeContainer');
-      const musicCard = document.getElementById('musicSuggestion');
-      const musicCover = musicCard.querySelector('.music-cover');
-      const musicTitle = document.getElementById('musicTitle');
-      const musicArtist = document.getElementById('musicArtist');
-      const vibeMessage = document.getElementById('vibeMessage');
-      const journalSection = document.getElementById('journalSection');
+      const musicCardDiv   = document.getElementById('musicSuggestion');
+      const musicCover    = musicCardDiv.querySelector('.music-cover');
+      const musicTitle    = document.getElementById('musicTitle');
+      const musicArtist   = document.getElementById('musicArtist');
+      const vibeMessage   = document.getElementById('vibeMessage');
+      const journalSection= document.getElementById('journalSection');
       const selectedMoodName = document.getElementById('selectedMoodName');
-      const journalInput = document.getElementById('journalInput');
-      const saveEntryBtn = document.getElementById('saveEntryBtn');
-      const pastEntries = document.getElementById('pastEntries');
+      const journalInput  = document.getElementById('journalInput');
+      const saveEntryBtn  = document.getElementById('saveEntryBtn');
+      const pastEntries   = document.getElementById('pastEntries');
       const entriesContainer = document.getElementById('entriesContainer');
 
-      // Create cards dynamically
+      // Build the swipe cards
       moods.forEach(mood => {
         const card = document.createElement('div');
         card.className = 'mood-card';
-        card.style.background = mood.color;
+        card.style.background = mood.gradient;
         card.innerHTML = `
           <h3>${mood.name}</h3>
           <p class="desc">${mood.desc}</p>
           <p class="song">${mood.song.title} — ${mood.song.artist}</p>
         `;
         card.addEventListener('click', () => {
-          // When card tapped, show message, song, journal
-          musicTitle.textContent = mood.song.title;
+          musicTitle.textContent  = mood.song.title;
           musicArtist.textContent = mood.song.artist;
-          musicCover.style.background = mood.color;
-          musicCard.style.display = 'block';
+          musicCover.style.background = mood.gradient;
+          musicCardDiv.style.display = 'block';
 
           vibeMessage.textContent = mood.message;
           vibeMessage.style.display = 'block';
 
           journalSection.style.display = 'block';
-          selectedMoodName.textContent = mood.name;
+          selectedMoodName.textContent  = mood.name;
           journalInput.value = '';
         });
         swipeContainer.appendChild(card);
       });
 
-      // Load past entries
+      // Load saved entries
       function loadEntries() {
         const stored = JSON.parse(localStorage.getItem('vibeEntries') || '[]');
         if (!stored.length) {
@@ -320,23 +350,23 @@
       }
       loadEntries();
 
+      // Save entry handler
       saveEntryBtn.addEventListener('click', () => {
-        const mood  = selectedMoodName.textContent;
-        const note  = journalInput.value.trim() || '(no note)';
-        const entry = { mood, note, date: new Date().toISOString() };
+        const mood = selectedMoodName.textContent;
+        const note = journalInput.value.trim() || '(no note)';
+        const newEntry = { mood, note, date: new Date().toISOString() };
         const stored = JSON.parse(localStorage.getItem('vibeEntries') || '[]');
-        stored.push(entry);
+        stored.push(newEntry);
         localStorage.setItem('vibeEntries', JSON.stringify(stored));
-        // hide UI pieces
         journalSection.style.display = 'none';
-        musicCard.style.display = 'none';
-        vibeMessage.style.display = 'none';
+        musicCardDiv.style.display  = 'none';
+        vibeMessage.style.display   = 'none';
         loadEntries();
       });
     });
   </script>
 
-  <!-- Atmosphere overlays (optional) -->
+  <!-- Optional overlay (if you want global ambience) -->
   <div class="atmo-warm"></div>
   <div class="atmo-grain"></div>
 </body>
