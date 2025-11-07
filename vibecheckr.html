@@ -3,101 +3,98 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VibeCheckr – Mood & Journal App (Concept)</title>
+  <title>VibeCheckr — Mindful Mood Check‑in</title>
 
-  <!-- Google Fonts -->
+  <!-- Meta -->
+  <meta name="description" content="Discover VibeCheckr — a gentle, self‑care‑focused web app for journaling, checking in on your mood and finding music that matches or shifts your vibe." />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 
-  <!-- Reuse main stylesheet -->
+  <!-- Main styles -->
   <link rel="stylesheet" href="css/styles.css" />
 
-  <!-- Extra styles for the VibeCheckr app -->
+  <!-- Additional Phase 1 styles -->
   <style>
-    .vibe-container {
-      max-width: 850px;
-      margin: 0 auto;
-      padding: 4rem 1.5rem;
+    .vc-hero {
       text-align: center;
+      padding: 4rem 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-    .vibe-container h1 {
+    .vc-hero h1 {
       margin-bottom: 0.5rem;
     }
-    .vibe-container p.lead {
+    .vc-hero p {
+      max-width: 650px;
+      margin: 0 auto 2rem;
       color: var(--color-text-light);
-      max-width: 600px;
+      font-size: 0.95rem;
+    }
+    .vc-section {
+      padding: 3rem 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .vc-section h2 {
+      margin-bottom: 1rem;
+    }
+    .vc-section p {
+      color: var(--color-text-light);
+      max-width: 700px;
       margin: 0 auto 2rem;
       font-size: 0.95rem;
     }
-    .mood-grid {
+    .vc-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.5rem;
       justify-content: center;
-      margin-bottom: 2rem;
+      margin-top: 1.5rem;
     }
-    .mood-btn {
-      padding: 0.6rem 1.2rem;
-      border-radius: 30px;
-      border: 1px solid var(--color-border);
+    .vc-card {
       background: var(--color-card-bg);
-      color: var(--color-text);
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    }
-    .mood-btn:hover {
-      background: var(--color-accent);
-      color: #fff;
-      transform: translateY(-2px);
-    }
-    .mood-btn.active {
-      background: var(--color-accent);
-      color: #fff;
-    }
-    .journal-section {
-      margin-bottom: 2rem;
-      display: none;
-    }
-    .journal-section textarea {
-      width: 100%;
-      min-height: 100px;
       border: 1px solid var(--color-border);
-      border-radius: 6px;
-      padding: 0.8rem;
-      background: var(--color-card-bg);
-      color: var(--color-text);
-      font-family: "Poppins", sans-serif;
-      font-size: 0.9rem;
-    }
-    .journal-section .btn {
-      margin-top: 1rem;
-    }
-    .feedback {
-      display: none;
-      margin-bottom: 2rem;
-    }
-    .past-entries {
-      margin-top: 2rem;
+      border-radius: 8px;
+      padding: 1.5rem;
+      max-width: 280px;
+      flex: 1 1 260px;
       text-align: left;
+      transition: transform 0.3s ease;
     }
-    .past-entries h3 {
+    .vc-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    .vc-card h3 {
       margin-bottom: 0.5rem;
+      font-size: 1.15rem;
     }
-    .past-entry {
-      margin-bottom: 0.6rem;
-      background: var(--color-card-bg);
-      padding: 0.6rem 0.8rem;
-      border-radius: 6px;
-      border: 1px solid var(--color-border);
+    .vc-card p {
       font-size: 0.85rem;
+      color: var(--color-text-light);
+    }
+    .vc-cta {
+      text-align: center;
+      margin: 3rem 0;
+    }
+    .vc-cta .btn {
+      font-size: 0.95rem;
+      padding: 0.8rem 1.6rem;
+    }
+    @media (max-width: 768px) {
+      .vc-grid {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
-
 <body>
-  <!-- Navbar (reuse from main site) -->
+  <!-- Navbar -->
   <nav class="navbar">
     <div class="nav-left">
       <a href="index.html#home" class="logo">Mo Frye</a>
@@ -133,114 +130,100 @@
     </div>
   </div>
 
-  <!-- VibeCheckr App -->
-  <main class="vibe-container">
+  <!-- Hero -->
+  <header class="vc-hero">
     <h1>VibeCheckr</h1>
-    <p class="lead">
-      How’s your vibe? Pick how you feel, jot a note if you’d like, and see your mood history.
+    <p>
+      A gentle space to check in with yourself. Reflect, discover music that resonates with your mood, and reset your vibe when you need it.
     </p>
+    <a href="#try" class="btn primary">Start Your Vibe Check</a>
+  </header>
 
-    <!-- Mood buttons -->
-    <div class="mood-grid" id="moodGrid">
-      <button class="mood-btn" data-mood="Feeling Good">Feeling Good</button>
-      <button class="mood-btn" data-mood="Inspired">Inspired</button>
-      <button class="mood-btn" data-mood="In the Zone">In the Zone</button>
-      <button class="mood-btn" data-mood="Chill / Relaxed">Chill / Relaxed</button>
-      <button class="mood-btn" data-mood="Drained">Drained</button>
-      <button class="mood-btn" data-mood="Stressed">Stressed</button>
-      <button class="mood-btn" data-mood="Feeling Low">Feeling Low</button>
-      <button class="mood-btn" data-mood="On Edge">On Edge</button>
+  <!-- Why It Helps -->
+  <section class="vc-section">
+    <h2>Why It Helps</h2>
+    <p>
+      Checking in with yourself shouldn’t feel clinical. VibeCheckr invites you to pause, reflect, and shift your energy in small, meaningful ways.
+    </p>
+    <div class="vc-grid">
+      <div class="vc-card">
+        <h3>Build Self‑Awareness</h3>
+        <p>Take a moment to notice how you feel. Acknowledge your vibe and learn patterns over time.</p>
+      </div>
+      <div class="vc-card">
+        <h3>Find Mood‑Based Music</h3>
+        <p>Discover music that matches or changes your vibe (planned integration with streaming APIs).</p>
+      </div>
+      <div class="vc-card">
+        <h3>Reset & Reflect</h3>
+        <p>Write a quick note. Feel what needs feeling. Then enjoy a fresh vibe with music or a mood reset.</p>
+      </div>
     </div>
+  </section>
 
-    <!-- Journal input -->
-    <div class="journal-section" id="journalSection">
-      <h2 id="selectedMoodHeader">Your mood: <span></span></h2>
-      <textarea id="journalInput" placeholder="Write a quick reflection (optional)..."></textarea>
-      <button class="btn primary" id="saveEntryBtn">Save Entry</button>
+  <!-- How It Works -->
+  <section class="vc-section">
+    <h2>How It Works</h2>
+    <p>
+      In three simple steps, VibeCheckr guides you through acknowledging your feelings, capturing them, and shifting your energy.
+    </p>
+    <div class="vc-grid">
+      <div class="vc-card">
+        <h3>1. Check Your Vibe</h3>
+        <p>Choose a mood from our gentle list. Whether you’re feeling good, drained or somewhere in between, we’ve got you.</p>
+      </div>
+      <div class="vc-card">
+        <h3>2. Journal Briefly</h3>
+        <p>Write a short reflection about why you feel this way (or skip if you just want music right away).</p>
+      </div>
+      <div class="vc-card">
+        <h3>3. Discover & Reset</h3>
+        <p>Listen to a curated music recommendation and revisit past check‑ins in your personal vibe history.</p>
+      </div>
     </div>
+  </section>
 
-    <!-- Feedback / suggestion -->
-    <div class="feedback" id="feedback">
-      <p>Thanks for checking in! We'll use this to learn your vibe and suggest music soon. 💜</p>
+  <!-- Features -->
+  <section class="vc-section">
+    <h2>Features</h2>
+    <div class="vc-grid">
+      <div class="vc-card">
+        <h3>Mood Check‑In</h3>
+        <p>Friendly mood options and a “journey” flow for deeper nuance. No clinical language here.</p>
+      </div>
+      <div class="vc-card">
+        <h3>Journaling</h3>
+        <p>A simple entry field to jot down your thoughts. Stored privately in your browser (no accounts needed).</p>
+      </div>
+      <div class="vc-card">
+        <h3>Music Pairing</h3>
+        <p>Planned integration with music APIs to match your vibe or offer a reset playlist.</p>
+      </div>
+      <div class="vc-card">
+        <h3>Vibe Trends</h3>
+        <p>Review your past check‑ins and notice patterns over time. This helps you understand what influences your mood.</p>
+      </div>
     </div>
+  </section>
 
-    <!-- Past entries -->
-    <div class="past-entries" id="pastEntries" style="display:none;">
-      <h3>Your Past Check-Ins</h3>
-      <div id="entriesContainer"></div>
+  <!-- CTA / Demo -->
+  <section class="vc-section" id="try">
+    <h2>Ready to Check Your Vibe?</h2>
+    <p>
+      Try a demo of VibeCheckr now. Pick a mood, write a note, and see how it feels.
+    </p>
+    <div class="vc-cta">
+      <a href="vibecheckr-demo.html" class="btn primary">Try the Demo</a>
+      <!-- Or link directly to the interactive app section if it's on this page -->
     </div>
-  </main>
+  </section>
 
-  <!-- Script for VibeCheckr -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // Mood selection
-      const moodButtons = document.querySelectorAll(".mood-btn");
-      const journalSection = document.getElementById("journalSection");
-      const selectedMoodSpan = journalSection.querySelector("span");
-      const saveEntryBtn = document.getElementById("saveEntryBtn");
-      const journalInput = document.getElementById("journalInput");
-      const feedback = document.getElementById("feedback");
-      const pastEntries = document.getElementById("pastEntries");
-      const entriesContainer = document.getElementById("entriesContainer");
-
-      // Load saved entries from localStorage
-      function loadEntries() {
-        const stored = JSON.parse(localStorage.getItem("vibeEntries") || "[]");
-        if (stored.length) {
-          pastEntries.style.display = "block";
-          entriesContainer.innerHTML = "";
-          stored.forEach(entry => {
-            const div = document.createElement("div");
-            div.className = "past-entry";
-            div.innerHTML = "<strong>" + entry.mood + "</strong> — " + new Date(entry.date).toLocaleString() + "<br>" + entry.note;
-            entriesContainer.appendChild(div);
-          });
-        }
-      }
-      loadEntries();
-
-      moodButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-          // Highlight selected button
-          moodButtons.forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
-          // Show journal section
-          selectedMoodSpan.textContent = btn.dataset.mood;
-          journalSection.style.display = "block";
-          feedback.style.display = "none";
-          journalInput.value = "";
-        });
-      });
-
-      // Save entry
-      saveEntryBtn.addEventListener("click", () => {
-        const mood = selectedMoodSpan.textContent;
-        const note = journalInput.value.trim() || "(no note)";
-        const newEntry = {
-          mood: mood,
-          note: note,
-          date: new Date().toISOString()
-        };
-        const stored = JSON.parse(localStorage.getItem("vibeEntries") || "[]");
-        stored.push(newEntry);
-        localStorage.setItem("vibeEntries", JSON.stringify(stored));
-        // Show feedback and reload entries
-        feedback.style.display = "block";
-        journalSection.style.display = "none";
-        loadEntries();
-      });
-
-      // Theme toggle from your existing script
-      // (Assumes js/script.js handles the theme toggling globally)
-    });
-  </script>
-
-  <!-- Reuse your existing script for theme & menu -->
+  <!-- JS -->
   <script src="js/script.js" defer></script>
 
-  <!-- Atmosphere overlays (optional) -->
+  <!-- Overlay (optional) -->
   <div class="atmo-warm"></div>
   <div class="atmo-grain"></div>
 </body>
 </html>
+
