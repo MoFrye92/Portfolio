@@ -6,7 +6,7 @@
   <title>VibeCheckr Demo – Check In & Reset</title>
 
   <!-- Meta -->
-  <meta name="description" content="Try the VibeCheckr demo – pick a mood, journal your thoughts, and see your vibe history. A gentle, private check-in tool by Mo Frye." />
+  <meta name="description" content="Try the VibeCheckr demo – pick a mood, journal your thoughts, see your vibe history and discover a music suggestion that matches your vibe." />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -96,11 +96,43 @@
       border: 1px solid var(--color-border);
       font-size: 0.85rem;
     }
+    /* Music suggestion card */
+    .music-suggestion {
+      display: none;
+      margin-top: 2rem;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--color-border);
+      background: var(--color-card-bg);
+    }
+    .music-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .music-cover {
+      width: 60px;
+      height: 60px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      background-size: cover;
+      background-position: center;
+    }
+    .music-info h4 {
+      margin: 0;
+      color: var(--color-text);
+      font-size: 1rem;
+    }
+    .music-info p {
+      margin: 0.2rem 0 0;
+      color: var(--color-text-light);
+      font-size: 0.85rem;
+    }
   </style>
 </head>
 
 <body>
-  <!-- Navbar (reuses your portfolio nav) -->
+  <!-- Navbar -->
   <nav class="navbar">
     <div class="nav-left">
       <a href="index.html#home" class="logo">Mo Frye</a>
@@ -140,7 +172,8 @@
   <main class="vibe-container">
     <h1>VibeCheckr Demo</h1>
     <p class="lead">
-      Pick how you’re feeling, jot a note if you’d like, and see your vibe history.
+      Pick how you’re feeling, jot a note if you’d like, and see your vibe history.  
+      We’ll even suggest a song for your vibe (one per mood for this demo).
     </p>
 
     <!-- Mood buttons -->
@@ -153,6 +186,17 @@
       <button class="mood-btn" data-mood="Stressed">Stressed</button>
       <button class="mood-btn" data-mood="Feeling Low">Feeling Low</button>
       <button class="mood-btn" data-mood="On Edge">On Edge</button>
+    </div>
+
+    <!-- Music suggestion (appears on mood selection) -->
+    <div id="musicSuggestion" class="music-suggestion">
+      <div class="music-card">
+        <div class="music-cover"></div>
+        <div class="music-info">
+          <h4 id="musicTitle">Song Title</h4>
+          <p id="musicArtist">Artist Name</p>
+        </div>
+      </div>
     </div>
 
     <!-- Journal input -->
@@ -177,6 +221,18 @@
   <!-- VibeCheckr Demo Script -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      // Map each mood to a demo song suggestion
+      const moodMusicMap = {
+        "Feeling Good": { title: "Good as Hell", artist: "Lizzo", color: "#8ED081" },
+        "Inspired": { title: "Dreams", artist: "Fleetwood Mac", color: "#FFCE70" },
+        "In the Zone": { title: "Eye of the Tiger", artist: "Survivor", color: "#F9A36E" },
+        "Chill / Relaxed": { title: "Weightless", artist: "Marconi Union", color: "#81C7E5" },
+        "Drained": { title: "Fix You", artist: "Coldplay", color: "#B0B0B0" },
+        "Stressed": { title: "Breathe", artist: "Télépopmusik", color: "#E7827C" },
+        "Feeling Low": { title: "Someone Like You", artist: "Adele", color: "#7C8FB2" },
+        "On Edge": { title: "Stressed Out", artist: "Twenty One Pilots", color: "#A78DFF" }
+      };
+
       // Mood selection
       const moodButtons = document.querySelectorAll(".mood-btn");
       const journalSection = document.getElementById("journalSection");
@@ -186,6 +242,10 @@
       const feedback = document.getElementById("feedback");
       const pastEntries = document.getElementById("pastEntries");
       const entriesContainer = document.getElementById("entriesContainer");
+      const musicCard = document.getElementById("musicSuggestion");
+      const musicCover = musicCard.querySelector(".music-cover");
+      const musicTitle = document.getElementById("musicTitle");
+      const musicArtist = document.getElementById("musicArtist");
 
       function loadEntries() {
         const stored = JSON.parse(localStorage.getItem("vibeEntries") || "[]");
@@ -208,10 +268,24 @@
         btn.addEventListener("click", () => {
           moodButtons.forEach(b => b.classList.remove("active"));
           btn.classList.add("active");
-          selectedMoodSpan.textContent = btn.dataset.mood;
+
+          const mood = btn.dataset.mood;
+          selectedMoodSpan.textContent = mood;
           journalSection.style.display = "block";
           feedback.style.display = "none";
           journalInput.value = "";
+
+          // Show music suggestion
+          const suggestion = moodMusicMap[mood];
+          if (suggestion) {
+            musicTitle.textContent = suggestion.title;
+            musicArtist.textContent = suggestion.artist;
+            // Use color as background (you can replace with an image instead)
+            musicCover.style.background = suggestion.color;
+            musicCard.style.display = "block";
+          } else {
+            musicCard.style.display = "none";
+          }
         });
       });
 
@@ -228,15 +302,16 @@
         localStorage.setItem("vibeEntries", JSON.stringify(stored));
         feedback.style.display = "block";
         journalSection.style.display = "none";
+        musicCard.style.display = "none";
         loadEntries();
       });
     });
   </script>
 
-  <!-- Theme toggle & menu script -->
+  <!-- Theme & menu script -->
   <script src="js/script.js" defer></script>
 
-  <!-- Overlays (if using them globally) -->
+  <!-- Overlays (optional) -->
   <div class="atmo-warm"></div>
   <div class="atmo-grain"></div>
 </body>
