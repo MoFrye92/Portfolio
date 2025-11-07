@@ -519,3 +519,40 @@ section.visible h2 {
   );
 }
 
+/* =========================================
+   ✨ FIX: Overlay Visibility & Layer Order
+   ========================================= */
+
+/* Keep overlays subtle and behind all content */
+.atmo-warm,
+.atmo-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1; /* 🔥 puts it safely behind text and UI */
+}
+
+/* Slightly reduce the darkness to make text pop */
+.atmo-warm {
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(155, 92, 255, 0.08) 0%,
+      rgba(255, 172, 120, 0.05) 40%,
+      rgba(0, 0, 0, 0.18) 100%
+  );
+  mix-blend-mode: soft-light;
+  opacity: 0.8;
+}
+
+.atmo-grain {
+  background-image: url('https://i.imgur.com/aV6ZCwH.png');
+  background-size: cover;
+  mix-blend-mode: overlay;
+  opacity: 0.1;
+}
+
+/* Ensure main content sits above */
+body, main, nav, section, footer {
+  position: relative;
+  z-index: 1;
+}
