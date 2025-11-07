@@ -147,14 +147,14 @@
           moodButtons.forEach(b => b.classList.remove("active"));
           btn.classList.add("active");
 
-          const mood = btn.dataset.mood;
+         const mood = btn.dataset.mood.trim();
           selectedMoodSpan.textContent = mood;
           journalSection.style.display = "block";
           feedback.style.display = "none";
           journalInput.value = "";
 
           // Show music suggestion & message
-          const suggestion = moodMusicMap[mood];
+         const suggestion = moodMusicMap[mood] || null;
           if (suggestion) {
             musicTitle.textContent = suggestion.title;
             musicArtist.textContent = suggestion.artist;
