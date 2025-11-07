@@ -1,48 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Monique Frye</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mo Frye • Projects</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Selected projects by Mo Frye – combining front‑end, data analysis, and ERP/SAP support in clean, human‑friendly builds." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Polaroid grid styles -->
+  <style>
+    .projects-page {
+      padding: 4rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .projects-page h2 {
+      margin-bottom: 0.5rem;
+    }
+    .projects-page p.intro {
+      margin-bottom: 2rem;
+      color: var(--color-text-light);
+    }
+    .polaroid-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .polaroid-item {
+      position: relative;
+      background: var(--color-card-bg);
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 300px;
+      max-width: 100%;
+      text-align: left;
+    }
+    .polaroid-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .polaroid-item img {
+      width: 100%;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+    .polaroid-caption {
+      font-size: 0.8rem;
+      font-family: 'Roboto Mono', monospace;
+      color: var(--color-accent);
+      margin-bottom: 0.5rem;
+    }
+    .polaroid-item p {
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+    .polaroid-item .btn {
+      font-size: 0.8rem;
+      padding: 0.5rem 1rem;
+    }
+    @media (max-width: 768px) {
+      .polaroid-item {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <h1>Projects</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section>
-        <h2>Highlighted Projects</h2>
-        <div class="project">
-            <h3>VibeCheckr</h3>
-            <p>A mood-tracking and music-syncing app to help users manage their emotions. Combines journaling and mood analysis with music suggestions.</p>
-            <a href="https://github.com/MoFrye92/VibeCheckr">View on GitHub</a>
-        </div>
-        <div class="project">
-            <h3>Network Security Plan</h3>
-            <p>A comprehensive network security plan developed for an Individual Project in my master's course, focusing on security strategies and risk management.</p>
-            <a href="https://github.com/MoFrye92/NetworkSecurityPlan">View on GitHub</a>
-        </div>
-        <div class="project">
-            <h3>Stoned Kold: Infused Desserts Website</h3>
-            <p>A promotional website for my adult-infused ice creams and sorbets. Features product descriptions and branding for Stoned Kold and Scoop on the Rocks.</p>
-            <a href="https://github.com/MoFrye92/StonedKold">View on GitHub</a>
-        </div>
-        <div class="project">
-            <h3>Data Analysis Pipeline</h3>
-            <p>Python-based pipeline for data extraction, transformation, and visualization, focusing on business intelligence and ERP data optimization.</p>
-            <a href="https://github.com/MoFrye92/DataPipeline">View on GitHub</a>
-        </div>
-    </section>
-    <footer>
-        <p>© 2025 Monique Frye</p>
-    </footer>
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="Primary navigation">
+    <div class="nav-left">
+      <a href="index.html#home" class="logo">Mo Frye</a>
+    </div>
+    <ul class="nav-links desktop-only">
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="index.html#skills">Skills</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="theme-toggle desktop-only">
+      <input type="checkbox" id="themeSwitch" aria-label="Toggle light/dark theme" />
+      <label for="themeSwitch" class="toggle"></label>
+    </div>
+    <button class="menu-btn mobile-only" id="openMenu" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">☰</button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu-overlay" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile menu">
+    <div class="mobile-menu-content">
+      <button class="close-menu" id="closeMenu" aria-label="Close menu">✕</button>
+      <ul>
+        <li><a href="index.html#home" class="mobile-link">Home</a></li>
+        <li><a href="projects.html" class="mobile-link">Projects</a></li>
+        <li><a href="index.html#skills" class="mobile-link">Skills</a></li>
+        <li><a href="index.html#contact" class="mobile-link">Contact</a></li>
+      </ul>
+      <div class="theme-toggle mobile-toggle">
+        <span>Light / Dark</span>
+        <input type="checkbox" id="themeSwitchMobile" aria-label="Toggle light/dark theme" />
+        <label for="themeSwitchMobile" class="toggle"></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects page content -->
+  <section class="projects-page">
+    <h2>My Projects</h2>
+    <p class="intro">A curated selection of work that blends front‑end development, data analysis and thoughtful design.</p>
+    <div class="polaroid-grid">
+      <!-- Project 1 -->
+      <div class="polaroid-item">
+        <img src="assets/images/vibecheckr-cover.jpg" alt="VibeCheckr screenshot">
+        <div class="polaroid-caption">VibeCheckr • HTML/CSS/JS</div>
+        <p>A mood‑based journaling and music app designed to help you check in with yourself and reset your vibe.</p>
+        <a href="vibecheckr.html" class="btn secondary">View Case Study</a>
+      </div>
+      <!-- Project 2 -->
+      <div class="polaroid-item">
+        <img src="assets/images/data-pipeline-cover.jpg" alt="Data Analysis Pipeline screenshot">
+        <div class="polaroid-caption">Data Analysis Pipeline • Python</div>
+        <p>A full data workflow project: cleaning raw data, analyzing it, and translating insights into clear visuals and reports.</p>
+        <a href="#" class="btn secondary">View Case Study</a>
+      </div>
+      <!-- Project 3 -->
+      <div class="polaroid-item">
+        <img src="assets/images/security-plan-cover.jpg" alt="Network Security Plan screenshot">
+        <div class="polaroid-caption">Network Security Plan</div>
+        <p>A graduate‑level project outlining network security planning, risk assessments and policy recommendations.</p>
+        <a href="#" class="btn secondary">View Case Study</a>
+      </div>
+      <!-- Add additional projects as needed -->
+    </div>
+  </section>
+
+  <!-- JavaScript (reuses your existing logic) -->
+  <script src="js/script.js" defer></script>
+
+  <!-- Overlay (if desired site‑wide) -->
+  <div class="atmo-warm"></div>
+  <div class="atmo-grain"></div>
 </body>
 </html>
