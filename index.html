@@ -2,10 +2,15 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mo Frye • Portfolio</title>
 
+  <!-- SEO -->
+  <meta name="description" content="Mo Frye — front-end, data, and ERP/SAP support. I build simple, functional, human-friendly digital projects." />
+
   <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <!-- Stylesheet -->
@@ -13,12 +18,8 @@
 </head>
 
 <body>
-  <!--  Atmospheric Overlays (Site-Wide) -->
-<div class="atmo-warm"></div>
-<div class="atmo-grain"></div>
-
   <!-- Navigation -->
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Primary">
     <div class="nav-left">
       <a href="#home" class="logo">Mo Frye</a>
     </div>
@@ -33,18 +34,18 @@
 
     <!-- Desktop Theme Toggle -->
     <div class="theme-toggle desktop-only">
-      <input type="checkbox" id="themeSwitch" />
+      <input type="checkbox" id="themeSwitch" aria-label="Toggle light/dark theme" />
       <label for="themeSwitch" class="toggle"></label>
     </div>
 
     <!-- Mobile Menu Button -->
-    <button class="menu-btn mobile-only" id="openMenu">☰</button>
+    <button class="menu-btn mobile-only" id="openMenu" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">☰</button>
   </nav>
 
   <!-- Mobile Modal Menu -->
-  <div class="mobile-menu-overlay" id="mobileMenu">
+  <div class="mobile-menu-overlay" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile menu">
     <div class="mobile-menu-content">
-      <button class="close-menu" id="closeMenu">✕</button>
+      <button class="close-menu" id="closeMenu" aria-label="Close menu">✕</button>
       <ul>
         <li><a href="#home" class="mobile-link">Home</a></li>
         <li><a href="#projects" class="mobile-link">Projects</a></li>
@@ -55,7 +56,7 @@
       <!-- Theme Toggle Inside Mobile Menu -->
       <div class="theme-toggle mobile-toggle">
         <span>Light / Dark</span>
-        <input type="checkbox" id="themeSwitchMobile" />
+        <input type="checkbox" id="themeSwitchMobile" aria-label="Toggle light/dark theme" />
         <label for="themeSwitchMobile" class="toggle"></label>
       </div>
     </div>
@@ -81,55 +82,56 @@
         <p>Building clean, responsive pages that focus on clarity, usability, and a smooth experience.</p>
       </div>
       <div class="skill-card">
-        <h3>Python & Data Analysis</h3>
+        <h3>Python &amp; Data Analysis</h3>
         <p>Turning raw data into clear stories and visuals through cleaning, analysis, and automation.</p>
       </div>
       <div class="skill-card">
-        <h3>ERP & SAP Support</h3>
+        <h3>ERP &amp; SAP Support</h3>
         <p>Helping systems run smoothly through access support, workflow guidance, and documentation.</p>
       </div>
     </div>
   </section>
-<!-- Tech Stack Section -->
-<section id="tech" class="tech-section">
-  <span class="section-label">My Tech Stack</span>
-  <h2>The Tools I Build & Think With</h2>
 
-  <div class="tech-wrapper">
-    <!-- Left: Tools -->
-    <div class="tech-list">
-      <div class="tech-group">
-        <h5>Languages</h5>
-        <p>HTML, CSS, JavaScript, Python</p>
+  <!-- Tech Stack Section -->
+  <section id="tech" class="tech-section">
+    <span class="section-label">My Tech Stack</span>
+    <h2>The Tools I Build &amp; Think With</h2>
+
+    <div class="tech-wrapper">
+      <!-- Left: Tools -->
+      <div class="tech-list">
+        <div class="tech-group">
+          <h5>Languages</h5>
+          <p>HTML, CSS, JavaScript, Python</p>
+        </div>
+
+        <div class="tech-group">
+          <h5>Data &amp; Analysis</h5>
+          <p>Pandas, NumPy, Jupyter Notebook, Excel</p>
+        </div>
+
+        <div class="tech-group">
+          <h5>Systems &amp; ERP</h5>
+          <p>SAP, Access Enforcer, WFM, ICAM</p>
+        </div>
+
+        <div class="tech-group">
+          <h5>Other</h5>
+          <p>Git &amp; GitHub, VS Code, Process Documentation</p>
+        </div>
       </div>
 
-      <div class="tech-group">
-        <h5>Data & Analysis</h5>
-        <p>Pandas, NumPy, Jupyter Notebook, Excel</p>
-      </div>
-
-      <div class="tech-group">
-        <h5>Systems & ERP</h5>
-        <p>SAP, Access Enforcer, WFM, ICAM</p>
-      </div>
-
-      <div class="tech-group">
-        <h5>Other</h5>
-        <p>Git & GitHub, VS Code, Process Documentation</p>
+      <!-- Right: Philosophy -->
+      <div class="tech-approach">
+        <h4>How I Use My Stack</h4>
+        <ul>
+          <li>🔍 Keep things clear, intuitive, and human-friendly — even when the tech is complex.</li>
+          <li>⚙️ Balance structure + creativity: build systems that work <em>and</em> feel good to use.</li>
+          <li>📈 Iterate, test, improve, repeat — refine until it feels right.</li>
+        </ul>
       </div>
     </div>
-
-    <!-- Right: Philosophy -->
-    <div class="tech-approach">
-      <h4>How I Use My Stack</h4>
-      <ul>
-        <li>🔍 I keep things clear, intuitive, and human-friendly — even when the tech is complex.</li>
-        <li>⚙️ I balance structure + creativity: build systems that work *and* feel good to use.</li>
-        <li>📈 I’m big on refining — iterate, test, improve, repeat until it feels right.</li>
-      </ul>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- Featured Projects -->
   <section id="projects" class="projects">
@@ -176,6 +178,10 @@
   </section>
 
   <!-- JavaScript -->
-  <script src="js/script.js"></script>
+  <script src="js/script.js" defer></script>
+
+  <!-- Atmospheric Overlays (Site-Wide) -->
+  <div class="atmo-warm"></div>
+  <div class="atmo-grain"></div>
 </body>
 </html>
