@@ -234,12 +234,18 @@
   const moodMessage = document.getElementById("moodMessage");
   const songTitle = document.getElementById("songTitle");
   const songArtist = document.getElementById("songArtist");
+  const journalInput = document.getElementById("journalInput");
+
+  // Track which mood is currently active
+  let currentMoodKey = null;
 
   /* Open Mood Modal */
-  document.querySelectorAll(".mood-card").forEach(card => {
+  document.querySelectorAll(".mood-card").forEach((card) => {
     card.addEventListener("click", () => {
       const mood = card.dataset.mood;
       const data = moods[mood];
+
+      currentMoodKey = mood; // remember selected mood
 
       moodMessage.textContent = data.msg;
       songTitle.textContent = data.song.title;
@@ -255,6 +261,8 @@
 
   /* Journal Modal Logic */
   document.getElementById("journalBtn").addEventListener("click", () => {
+    // Close mood modal and open journal modal
+    moodOverlay.style.display = "none";
     journalOverlay.style.display = "flex";
   });
 
@@ -264,19 +272,30 @@
 
   /* Save Journal Entry */
   document.getElementById("saveEntry").addEventListener("click", () => {
-    const text = document.getElementById("journalInput").value.trim();
-    if (text.length < 1) return alert("Write something first!");
+    const text = journalInput.value.trim();
+    if (!text) {
+      alert("Write something first!");
+      return;
+    }
 
     const entries = JSON.parse(localStorage.getItem("vibeEntries") || "[]");
 
-    entries.push({
+    const entry = {
       text,
       date: new Date().toLocaleString()
-    });
+    };
 
+    // Attach mood + song context if we have it
+    if (currentMoodKey && moods[currentMoodKey]) {
+      entry.mood = currentMoodKey;
+      entry.moodMessage = moods[currentMoodKey].msg;
+      entry.song = moods[currentMoodKey].song; // { title, artist }
+    }
+
+    entries.push(entry);
     localStorage.setItem("vibeEntries", JSON.stringify(entries));
 
-    document.getElementById("journalInput").value = "";
+    journalInput.value = "";
     journalOverlay.style.display = "none";
     alert("Saved ✨");
   });
