@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VibeCheckr • Mood Flow</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0d0d10;
+      --card: #1a1a1d;
+      --text: #f5f5f7;
+      --text-light: #b3b3b8;
+      --accent: #9b5cff;
+      --accent-soft: rgba(155, 92, 255, 0.2);
+      --border: #2d2d33;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 2rem 1.2rem 4rem;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.3rem;
+      margin-bottom: 1.2rem;
+    }
+
+    p.center {
+      text-align: center;
+      color: var(--text-light);
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Mood Grid */
+    .mood-grid {
+      display: grid;
+      gap: 1.3rem;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .mood-card {
+      background: var(--card);
+      padding: 1rem;
+      text-align: center;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .mood-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    /* Modal Layout */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      z-index: 99;
+    }
+
+    .modal {
+      background: var(--card);
+      padding: 1.8rem;
+      border-radius: 12px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      border: 1px solid var(--border);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal h2 {
+      margin-bottom: 1rem;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 0.7rem 1.3rem;
+      border-radius: 6px;
+      display: inline-block;
+      cursor: pointer;
+      margin-top: 1rem;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .primary { background: var(--accent); color: white; }
+    .secondary { border: 1px solid var(--accent); color: var(--accent); }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Song Card */
+    .song-card {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: var(--accent-soft);
+      border-radius: 10px;
+    }
+
+    .song-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .song-artist {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    /* Journal Modal */
+    textarea {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #111;
+      color: var(--text);
+      padding: 0.8rem;
+      margin-top: 1rem;
+      resize: none;
+      font-family: inherit;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>VibeCheckr</h1>
+  <p class="center">How are you feeling right now? Tap a mood to check in.</p>
+
+  <!-- Mood Grid -->
+  <div class="mood-grid">
+    <div class="mood-card" data-mood="good">Feeling Good</div>
+    <div class="mood-card" data-mood="inspired">Inspired</div>
+    <div class="mood-card" data-mood="zone">In the Zone</div>
+    <div class="mood-card" data-mood="chill">Chill / Relaxed</div>
+    <div class="mood-card" data-mood="drained">Drained</div>
+    <div class="mood-card" data-mood="stressed">Stressed</div>
+    <div class="mood-card" data-mood="low">Feeling Low</div>
+    <div class="mood-card" data-mood="edge">On Edge</div>
+  </div>
+
+
+  <!-- Mood Modal -->
+  <div class="overlay" id="moodOverlay">
+    <div class="modal" id="moodModal">
+      <h2 id="moodMessage"></h2>
+
+      <div class="song-card">
+        <div class="song-title" id="songTitle"></div>
+        <div class="song-artist" id="songArtist"></div>
+      </div>
+
+      <button class="btn primary" id="journalBtn">Journal It</button>
+      <button class="btn secondary" id="closeMood">Close</button>
+    </div>
+  </div>
+
+  <!-- Journal Modal -->
+  <div class="overlay" id="journalOverlay">
+    <div class="modal">
+      <h2>Want to write about it?</h2>
+      <textarea id="journalInput" placeholder="Let it out..."></textarea>
+      <button class="btn primary" id="saveEntry">Save Entry</button>
+      <button class="btn secondary" id="closeJournal">Cancel</button>
+    </div>
+  </div>
+
+
+<script>
+  /* Mood Data */
+  const moods = {
+    good: {
+      msg: "We love a good vibe. Want to bottle this moment with a quick note or a song that matches?",
+      song: { title: "Sunny Hues", artist: "Lo-Fi Beats Collective" }
+    },
+    inspired: {
+      msg: "Creative spark activated. Want to channel it into a quick note or match it with a vibe?",
+      song: { title: "Golden Ideas", artist: "Dreamwave" }
+    },
+    zone: {
+      msg: "Locked in. Want to amplify the focus or reflect before moving forward?",
+      song: { title: "Deep Focus Flow", artist: "Aether" }
+    },
+    chill: {
+      msg: "Relaxed energy — perfect for a soft reset or reflective moment.",
+      song: { title: "Soft Breeze", artist: "Clouded Minds" }
+    },
+    drained: {
+      msg: "Got you — brain’s doing the absolute most today. You don’t have to fix anything right now.",
+      song: { title: "Gentle Recharge", artist: "Slow Aura" }
+    },
+    stressed: {
+      msg: "Whew… that’s a lot to carry. Want a small grounding moment?",
+      song: { title: "Weight Off", artist: "Ease" }
+    },
+    low: {
+      msg: "It’s okay to feel this way. Want to soften the edges with a note or a vibe?",
+      song: { title: "Blue Sky Slowdown", artist: "Quiet Hours" }
+    },
+    edge: {
+      msg: "Deep breath — you’re not alone in that feeling. Want to unpack it gently?",
+      song: { title: "Unwind Pulse", artist: "Night Tides" }
+    }
+  };
+
+  const moodOverlay = document.getElementById("moodOverlay");
+  const journalOverlay = document.getElementById("journalOverlay");
+
+  const moodMessage = document.getElementById("moodMessage");
+  const songTitle = document.getElementById("songTitle");
+  const songArtist = document.getElementById("songArtist");
+
+  /* Open Mood Modal */
+  document.querySelectorAll(".mood-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const mood = card.dataset.mood;
+      const data = moods[mood];
+
+      moodMessage.textContent = data.msg;
+      songTitle.textContent = data.song.title;
+      songArtist.textContent = data.song.artist;
+
+      moodOverlay.style.display = "flex";
+    });
+  });
+
+  document.getElementById("closeMood").addEventListener("click", () => {
+    moodOverlay.style.display = "none";
+  });
+
+  /* Journal Modal Logic */
+  document.getElementById("journalBtn").addEventListener("click", () => {
+    journalOverlay.style.display = "flex";
+  });
+
+  document.getElementById("closeJournal").addEventListener("click", () => {
+    journalOverlay.style.display = "none";
+  });
+
+  /* Save Journal Entry */
+  document.getElementById("saveEntry").addEventListener("click", () => {
+    const text = document.getElementById("journalInput").value.trim();
+    if (text.length < 1) return alert("Write something first!");
+
+    const entries = JSON.parse(localStorage.getItem("vibeEntries") || "[]");
+
+    entries.push({
+      text,
+      date: new Date().toLocaleString()
+    });
+
+    localStorage.setItem("vibeEntries", JSON.stringify(entries));
+
+    document.getElementById("journalInput").value = "";
+    journalOverlay.style.display = "none";
+    alert("Saved ✨");
+  });
+</script>
+
+</body>
+</html>
